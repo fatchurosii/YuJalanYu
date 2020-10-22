@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+</head>
+<body>
+	{% for i in data %}
+		<p>{{i.nama_paket}}</p>
+		{% for img_pic in img %}
+			<img src="{{img_pic.getImage}}">
+		{% endfor %}
+	{% endfor %}
+</body>
+</html>

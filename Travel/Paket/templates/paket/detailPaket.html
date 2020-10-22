@@ -1,0 +1,11 @@
+{% extends "PaketView.html" %}
+
+{% block content %}
+	<h1>Detail {{object.nama_paket}}</h1>
+	<h4>Slug : {{object.slug}}</h4>
+	{% for img in img_object %}
+		{% if img.id_paket.id == object.id %}
+			<img src="{{img.getImage}}">
+		{% endif %}
+	{% endfor %}
+{% endblock content %}
