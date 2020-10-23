@@ -1,0 +1,23 @@
+{% extends "PaketView.html" %}
+{% load static %}
+
+{% block content %}
+	<h2>Home / Travel Package</h2>
+	{% if error is not None %}
+
+		<h1>{{error}}</h1>
+
+	{% endif %}
+	<br>
+	{% for i in object_list %}
+
+		<h4>{{i.nama_paket}}</h4>
+		<br>
+		{% for pic in img %}
+			{% if pic.id_paket == i %}
+				<img src="{{pic.getImage}}">
+			{% endif %}
+		{% endfor %}
+
+	{% endfor %}
+{% endblock content %}

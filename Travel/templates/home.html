@@ -30,6 +30,9 @@
 			<a class="btn btn-primary" href="{% url "paket:detail" i.slug%}">Detail</a>
 			<br>
 		{% endfor %}
+		<br>
+		<a class="btn btn-danger" href="{% url "paket:view" %}">MORE</a>
+		<br>
 	{% endblock Popular %}
 	
 	{% block Testimoni %}

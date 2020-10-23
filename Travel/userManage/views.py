@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 
 # Create your views here.
@@ -11,6 +12,11 @@ class Login(LoginView):
 		'title':'LOGIN'
 	}
 
+	def get(self, request, *args, **kwargs):
+		if self.request.user.is_authenticated:
+			return redirect('home')
+		return self.render_to_response(self.get_context_data())
+
 	def get_context_data(self, **kwargs):
 	    self.kwargs.update(self.extra_context)
 	    kwargs = self.kwargs
@@ -19,5 +25,10 @@ class Login(LoginView):
 	def get_success_url(self):
 		return self.success_url
 
-# class Logout(Logout):
-# 	pass
+class Logout(LogoutView):
+	next_page = reverse_lazy('akun:login')
+
+
+
+
+
