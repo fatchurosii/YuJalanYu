@@ -1,14 +1,42 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>{{title}}</title>
+	{% include "./include/css.html" %}
+	<link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}">
 </head>
 <body>
-	{% for i in data %}
-		<p>{{i.nama_paket}}</p>
-		{% for img_pic in img %}
-			<img src="{{img_pic.getImage}}">
+	{% include "./include/navbar.html" %}
+	{% block Banner %}
+	<div class="banner">
+		<img src="{% static "image/banner.png" %}">
+	</div>
+	<div class="logoBanner">
+		<img src="{% static "image/BannerTextLogo.png" %}">
+	</div>
+	{% endblock Banner %}
+	
+	{% block Popular %}
+		{% for i in data %}
+			{% for img_pic in img %}
+				{% if img_pic.id_paket == i %}
+					<img src="{{img_pic.getImage}}">
+				{% endif %}
+			{% endfor %}
+			<h4>{{i.nama_paket}}</h4>
+			<p>Destinasi : {{i.destinasi}}</p>
+			<a class="btn btn-primary" href="{% url "paket:detail" i.slug%}">Detail</a>
+			<br>
 		{% endfor %}
-	{% endfor %}
+	{% endblock Popular %}
+	
+	{% block Testimoni %}
+		<img src="{% static "image/user-1.png" %}">
+		<img src="{% static "image/user-2.png" %}">
+	{% endblock Testimoni %}
+
+{% include "./include/js.html" %}
 </body>
 </html>

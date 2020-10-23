@@ -7,6 +7,7 @@ from .views import homeView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', homeView.as_view(), name='home'),
+    path('user/', include('userManage.urls', namespace='akun')),
 	path('paket/', include('Paket.urls', namespace='paket')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
