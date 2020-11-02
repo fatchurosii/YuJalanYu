@@ -53,7 +53,7 @@ header .banner-txt {
 
 .section-popular {
   background-color: #EFF9FA;
-  min-height: 1800px;
+  min-height: 1300px;
 }
 
 .section-popular .text-popular {
@@ -130,5 +130,25 @@ header .banner-txt {
 .btn-more:hover {
   background-color: #2dbac4;
   color: #ffffff;
+}
+
+.section-testimonials {
+  min-height: 506px;
+}
+
+.text-testi {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.card-testimonials {
+  margin-top: 20px;
+  min-height: 300px;
+}
+
+.section-footer a {
+  color: #0BA0AC;
 }
 /*# sourceMappingURL=main.css.map */
