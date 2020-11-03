@@ -1,0 +1,20 @@
+{% extends "PaketView.html" %}
+{% load static %}
+
+{% block content %}
+	<h1>Home / Travel Package</h1>
+	<form action="{% url "paket:search" %}">
+		<input type="text" name="search" placeholder="Search">
+		<input type="submit" value="Search">
+	</form>
+	{% for i in paket_object %}
+		<h3>Nama Paket : {{i.nama_paket}}</h3>
+		<h4>Destinasi : {{i.destinasi}}</h4>
+		<p>{{i.about|truncatechars:15}} <a href="{% url 'paket:detail' i.slug %}">Selengkapnya</a></p>
+		{% for img in img_object %}
+			{% if img.id_paket.id == i.id %}
+				<img src="{{img.image.url}}" class="rounded-lg">
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+{% endblock content %}
