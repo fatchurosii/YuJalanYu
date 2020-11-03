@@ -24,8 +24,6 @@ body{
     }
     
 }
-
-
 .nav-link{
     margin-right: 5px;
     &:hover{
@@ -197,8 +195,37 @@ header{
         color:  #0BA0AC;
         font-size: 20px;
     }
+    .card-details{
+        padding: 30px;
+        border-radius: 11px;
+    
+    }
+    .join-container {
+        margin-top: -16px;
 
-   
+    }
+    .btn-join-now{
+        background-color: #0BA0AC;
+        color: #ffffff;
+        border-radius: 0;
+        &:hover{
+            background-color: #2dbac4;
+            color: #fff;
+        }
+    }
 }
 
 
+.ccolor-heart{
+    color: pink;
+}
+h1{ 
+    font-size: 26px;
+}
+h2{
+    font-size: 20px;
+}
+p{
+    font-size: 18px;
+    color: #b1b1b1;
+}

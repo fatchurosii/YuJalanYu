@@ -178,4 +178,41 @@ header .banner-txt {
   color: #0BA0AC;
   font-size: 20px;
 }
+
+.section-package .card-details {
+  padding: 30px;
+  border-radius: 11px;
+}
+
+.section-package .join-container {
+  margin-top: -16px;
+}
+
+.section-package .btn-join-now {
+  background-color: #0BA0AC;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.section-package .btn-join-now:hover {
+  background-color: #2dbac4;
+  color: #fff;
+}
+
+.ccolor-heart {
+  color: pink;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: #b1b1b1;
+}
 /*# sourceMappingURL=main.css.map */
