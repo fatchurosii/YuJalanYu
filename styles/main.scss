@@ -1,3 +1,4 @@
+
 body{
     font-family: 'PT Sans Caption', sans-serif;
 }
@@ -24,14 +25,16 @@ body{
     
 }
 
-
 .nav-link{
     margin-right: 5px;
     &:hover{
         border-bottom: 3px solid #0BA0AC ;
       
     }
+   
 }
+
+
 
 header{
     padding: 200px 0px 165px;
@@ -84,7 +87,7 @@ header{
     margin-top: 50px;
 }
 .card-body{
-    min-height: 150px;
+    min-height: 200px;
     .card-title{
         font-size: 30px;
         font-weight: bold;
@@ -159,3 +162,42 @@ header{
 //  footer .section-footer{
 //     margin-top: -2000px;
 // }
+
+
+.section-package-content{
+   
+ 
+    .breadcrumb{
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .breadcrumb-item{
+        &.active{
+            
+            color: #0BA0AC;
+        }
+    }
+}
+
+.btn-search{
+    background-color: #0BA0AC ;
+}
+
+.icon-color{
+    color: white;
+}
+
+.section-package{
+    
+    min-height: 1000px;
+    
+    .price-text{
+        color:  #0BA0AC;
+        font-size: 20px;
+    }
+
+   
+}
+
+

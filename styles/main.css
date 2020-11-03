@@ -73,7 +73,7 @@ header .banner-txt {
 }
 
 .card-body {
-  min-height: 150px;
+  min-height: 200px;
 }
 
 .card-body .card-title {
@@ -150,5 +150,32 @@ header .banner-txt {
 
 .section-footer a {
   color: #0BA0AC;
+}
+
+.section-package-content .breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.section-package-content .breadcrumb-item.active {
+  color: #0BA0AC;
+}
+
+.btn-search {
+  background-color: #0BA0AC;
+}
+
+.icon-color {
+  color: white;
+}
+
+.section-package {
+  min-height: 1000px;
+}
+
+.section-package .price-text {
+  color: #0BA0AC;
+  font-size: 20px;
 }
 /*# sourceMappingURL=main.css.map */
