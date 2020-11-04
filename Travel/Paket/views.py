@@ -15,7 +15,6 @@ class ListPaket(ListView):
 
 	def get_context_data(self, **kwargs):
 	    self.kwargs.update(self.extra_context)
-	    print(imagesPaket.objects.all())
 	    kwargs = self.kwargs
 	    return super().get_context_data()
 

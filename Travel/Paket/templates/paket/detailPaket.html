@@ -1,8 +1,20 @@
 {% extends "PaketView.html" %}
+{% load humanize %}
 
 {% block content %}
-	<h1>Detail {{object.nama_paket}}</h1>
-	<h4>Slug : {{object.slug}}</h4>
+	<p>Home / Travel Package / Details</p>
+	<h3>Detail {{object.nama_paket}}</h3>
+	<p>{{object.destinasi}}</p>
+
+	<div class="trip_Info">
+		<h2><i>Trip Informations</i></h2>
+		<p>Durasi : {{object.lama_hari}}</p>
+		<p>Price : {{object.harga|intword}}/ Person</p>
+		<p>Tanggal Pemberangkatan : {{object.tgl_berangkat|date:"l j F Y"}}</p>
+		<a class="btn btn-primary" href="">JOIN NOW BEFORE {{object.tgl_berangkat|naturalday}}</a>
+	</div>
+
+	<br>
 	{% for img in img_object %}
 		{% if img.id_paket.id == object.id %}
 			<img src="{{img.getImage}}">
