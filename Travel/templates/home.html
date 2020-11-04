@@ -1,45 +1,165 @@
 {% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{title}}</title>
-	{% include "./include/css.html" %}
-	<link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}">
-</head>
-<body>
-	{% include "./include/navbar.html" %}
-	{% block Banner %}
-	<div class="banner">
-		<img src="{% static "image/banner.png" %}">
-	</div>
-	<div class="logoBanner">
-		<img src="{% static "image/BannerTextLogo.png" %}">
-	</div>
-	{% endblock Banner %}
-	
-	{% block Popular %}
-		{% for i in data %}
-			{% for img_pic in img %}
-				{% if img_pic.id_paket == i %}
-					<img src="{{img_pic.getImage}}">
-				{% endif %}
-			{% endfor %}
-			<h4>{{i.nama_paket}}</h4>
-			<p>Destinasi : {{i.destinasi}}</p>
-			<a class="btn btn-primary" href="{% url "paket:detail" i.slug%}">Detail</a>
-			<br>
-		{% endfor %}
-		<br>
-		<a class="btn btn-danger" href="{% url "paket:view" %}">MORE</a>
-		<br>
-	{% endblock Popular %}
-	
-	{% block Testimoni %}
-		<img src="{% static "image/user-1.png" %}">
-		<img src="{% static "image/user-2.png" %}">
-	{% endblock Testimoni %}
+    <!-- Bootstrap CSS -->
+	{% include './include/css.html' %}
+    <title>{{title}}</title>
+  </head>
+  <body>
+     <!-- Navbar -->
+ 
+{% include './include/navbar.html' %}
 
-{% include "./include/js.html" %}
-</body>
+<header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <p class="banner-txt">
+            Find Your Travel
+            <br>
+            Local Expert
+          </p>
+          <a href="#" class="btn btn-get-started mt-4 mr-4">Get Started</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="{% static 'images/line.png' %}" alt="">
+        </div>
+        <div class="col-md-4 ml-auto">
+          <img src="{% static 'images/BannerTextLogo.png' %}" alt="">
+        </div>
+      </div>
+    </div>
+</header>
+
+<main>
+  <section class="section-popular" id="popular">
+    <div class="container">
+      <div class="row">
+        <div class="col-4 text-left">
+         <p class="text-popular">
+          Popular Travel
+          <br>
+          Itineraries
+         </p>     
+        </div>
+        <div class="col-8 text-left">
+          <p class="text-popular-2">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor repellat tempora assumenda sit quibusdam voluptatibus quasi eos. Odit laboriosam necessitatibus cum laborum, velit eveniet repudiandae cumque ex laudantium deleniti quis.
+          </p>     
+         </div>
+        <div class="col-sm-6 col-md-4 ">
+          <div class="card-travel shadow-lg rounded" >
+            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Lombok</h5>
+              <p class="card-text">Nusa Tenggara Barat</p>
+              <a href="#" class="btn btn-details float-right">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 ">
+          <div class="card-travel shadow-lg rounded" >
+            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Lombok</h5>
+              <p class="card-text">Nusa Tenggara Barat</p>
+              <a href="#" class="btn btn-details float-right">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 ">
+          <div class="card-travel shadow-lg rounded">
+            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Lombok</h5>
+              <p class="card-text">Nusa Tenggara Barat</p>
+              <a href="#" class="btn btn-details float-right">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 ">
+          <div class="card-travel shadow-lg rounded" >
+            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Lombok</h5>
+              <p class="card-text">Nusa Tenggara Barat</p>
+              <a href="#" class="btn btn-details float-right">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 ">
+          <div class="card-travel shadow-lg rounded" >
+            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Lombok</h5>
+              <p class="card-text">Nusa Tenggara Barat</p>
+              <a href="#" class="btn btn-details float-right">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 ">
+          <div class="card-travel shadow-lg rounded">
+            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Lombok</h5>
+              <p class="card-text">Nusa Tenggara Barat</p>
+              <a href="#" class="btn btn-details float-right">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="text-more">
+             Find More 
+            <br>
+            <div class="text-more-2">Itineraries </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <a href="" class="btn btn-more">More Itineraries</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Testimonials -->
+
+  <section class="section-testimonials" id="testimonials">
+    <h1 class="text-testi">Our Testimonials</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-testimonials shadow-sm">
+            <div class="card-body">
+              <p class="card-text"> " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, voluptatibus vel! Aliquam vero vel dolorem ullam libero labore sunt ab veniam sequi, totam numquam, sint odio delectus perspiciatis cum reiciendis. "</p>
+              <img src="{% static 'images/user-1.png' %}" alt="" class="float-right"> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card card-testimonials shadow-sm">
+            <div class="card-body">
+              <p class="card-text">" Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut ducimus consequuntur temporibus velit culpa nihil corrupti sed maxime hic veniam? Labore rem dolorum repudiandae asperiores! Enim totam eos debitis non! "</p>
+              <img src="{% static 'images/user-1.png' %}" alt="" class="float-right">  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+{% include './include/footer.html' %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {% include './include/js.html' %}
+ 
+  </body>
 </html>

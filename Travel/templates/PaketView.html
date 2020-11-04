@@ -3,11 +3,14 @@
 <head>
 	<title>{{title}}</title>
 	{% include "./include/css.html" %}
+
 </head>
 <body>
+
+	{% include './include/navbar.html' %}
 	{% block content %}
 	{% endblock content %}
-
+	{% include './include/footer.html' %}
 	{% include "./include/js.html" %}
 </body>
 </html>

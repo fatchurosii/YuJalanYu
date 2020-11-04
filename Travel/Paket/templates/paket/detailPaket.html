@@ -2,22 +2,126 @@
 {% load humanize %}
 
 {% block content %}
-	<p>Home / Travel Package / Details</p>
-	<h3>Detail {{object.nama_paket}}</h3>
-	<p>{{object.destinasi}}</p>
-
-	<div class="trip_Info">
-		<h2><i>Trip Informations</i></h2>
-		<p>Durasi : {{object.lama_hari}}</p>
-		<p>Price : {{object.harga|intword}}/ Person</p>
-		<p>Tanggal Pemberangkatan : {{object.tgl_berangkat|date:"l j F Y"}}</p>
-		<a class="btn btn-primary" href="">JOIN NOW BEFORE {{object.tgl_berangkat|naturalday}}</a>
-	</div>
-
-	<br>
-	{% for img in img_object %}
-		{% if img.id_paket.id == object.id %}
-			<img src="{{img.getImage}}">
-		{% endif %}
-	{% endfor %}
+	
+	<main>
+		<section class="section-package-content mt-5">
+			<div class="container">
+			 <div class="row">
+				 <div class="row p-0">
+					 <nav>
+						 <ol class="breadcrumb">
+							 <li class="breadcrumb-item">
+								 Home
+							 </li>
+							 <li class="breadcrumb-item">
+							  Paket Travel
+						  </li>
+						  <li class="breadcrumb-item active">
+							Details Package
+						</li>
+						 </ol>
+					 </nav>
+				 </div>
+			 </div>  
+		</div>
+		
+		</section>
+	
+		<section class="section-package">
+			<div class="container">
+			  <div class="row">
+				<div class="col-lg-8 pl-lg-0">
+					<div class="card card-details">
+						<h1>{{object.nama_paket}}</h1>
+						<p>{{object.destinasi}}	</p>
+						<div class="gallery ml-2">
+							<div class="xzoom-container">
+								<img 
+									src="images/item-2.jpg" 
+									class="xzoom" 
+									id="xzoom-default" 
+									xoriginal="images/item-2.jpg">
+							</div>
+							<div class="xzoom-thumbs mt-2">
+								<a href="images/item-2.jpg">
+								<img 
+									src="images/item-2.jpg" 
+									class="xzoom-gallery" 
+									width="120" 
+									xpreview="images/item-2.jpg">
+								</a>
+								<a href="images/item-2.jpg">
+									<img 
+										src="images/item-2.jpg" 
+										class="xzoom-gallery" 
+										width="120" 
+										xpreview="images/item-2.jpg">
+									</a>
+									<a href="images/item-2.jpg">
+								<img 
+									src="images/item-2.jpg" 
+									class="xzoom-gallery" 
+									width="120" 
+									xpreview="images/item-2.jpg">
+								</a>
+								<a href="images/item-2.jpg">
+									<img 
+										src="images/item-2.jpg" 
+										class="xzoom-gallery" 
+										width="120" 
+										xpreview="images/item-2.jpg">
+									</a>
+									<a href="images/item-2.jpg">
+										<img 
+											src="images/item-2.jpg" 
+											class="xzoom-gallery" 
+											width="120" 
+											xpreview="images/item-2.jpg">
+										</a>
+							</div>
+						</div>
+	
+						<h1>Deskripsi Paket</h1>
+						<p class="text-description">{{object.about}}</p>
+	
+						
+			  </div>
+			  
+			</div>
+			<div class="col-lg-4">
+			  <div class="card card-details card-right">
+				  <h2>Trip Informations</h2>
+				  <hr>
+				  <table class="trip-information">
+					  <tr>
+						  <td width='50%'>Duration</td>
+						  <td width='50%' class="text-right">
+							 4 D
+						  </td>
+					  </tr>
+					  <tr>
+						  <td width='40%'>Price</td>
+						  <td width='60%' class="text-right">
+						   Rp 500 K / Person
+						  </td>
+					  </tr>
+					  <tr>
+						  <td width='50%'>Date of Depature</td>
+						  <td width='50%' class="text-right">
+							 22 Aug 2019
+						  </td>
+					  </tr>
+				  </table>
+		  </div>
+		  <div class="join-container">
+			  <a href="checkout.html" class="btn btn-block btn-join-now mt-3 py-2">
+				  Join Now
+			  </a>
+		   </div>
+	   </div>
+	  </div>      
+	  </div>
+			</div>
+		  </section>
+	</main>
 {% endblock content %}
