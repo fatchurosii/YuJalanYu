@@ -53,7 +53,7 @@ header .banner-txt {
 
 .section-popular {
   background-color: #EFF9FA;
-  min-height: 1800px;
+  min-height: 1300px;
 }
 
 .section-popular .text-popular {
@@ -73,7 +73,7 @@ header .banner-txt {
 }
 
 .card-body {
-  min-height: 150px;
+  min-height: 200px;
 }
 
 .card-body .card-title {
@@ -130,5 +130,89 @@ header .banner-txt {
 .btn-more:hover {
   background-color: #2dbac4;
   color: #ffffff;
+}
+
+.section-testimonials {
+  min-height: 506px;
+}
+
+.text-testi {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.card-testimonials {
+  margin-top: 20px;
+  min-height: 300px;
+}
+
+.section-footer a {
+  color: #0BA0AC;
+}
+
+.section-package-content .breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.section-package-content .breadcrumb-item.active {
+  color: #0BA0AC;
+}
+
+.btn-search {
+  background-color: #0BA0AC;
+}
+
+.icon-color {
+  color: white;
+}
+
+.section-package {
+  min-height: 1000px;
+}
+
+.section-package .price-text {
+  color: #0BA0AC;
+  font-size: 20px;
+}
+
+.section-package .card-details {
+  padding: 30px;
+  border-radius: 11px;
+}
+
+.section-package .join-container {
+  margin-top: -16px;
+}
+
+.section-package .btn-join-now {
+  background-color: #0BA0AC;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.section-package .btn-join-now:hover {
+  background-color: #2dbac4;
+  color: #fff;
+}
+
+.ccolor-heart {
+  color: pink;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: #b1b1b1;
 }
 /*# sourceMappingURL=main.css.map */
