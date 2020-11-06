@@ -5,7 +5,7 @@ from .models import modelPaket, imagesPaket
 
 class adminPaket(admin.ModelAdmin):
 	model = [modelPaket, imagesPaket]
-	readonly_fields = ['slug', 'tgl_dibuat']
+	readonly_fields = ['slug', 'tgl_dibuat',]
 
 admin.site.register(imagesPaket)
 admin.site.register(modelPaket, adminPaket)

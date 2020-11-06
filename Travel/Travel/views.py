@@ -9,12 +9,13 @@ class homeView(View):
 
 	def get(self, request):
 		model = modelPaket.objects.order_by('-tgl_dibuat')
+		# model.images
 		dataPaket = []
 		dataImg = []
 		for x in model:
 			if x.tgl_berangkat > datetime.date.today():
 				dataPaket.append(x)
-				dataImg.append(imagesPaket.objects.get(id_paket=x))
+				# dataImg.append(imagesPaket.objects.get(id_paket=x))
 		
 		context = {
 		'title':"HOME",
