@@ -27,5 +27,6 @@ class imagesPaket(models.Model):
 		return f"{self.id} - {self.id_paket}"
 
 	def getImage(self):
+		print(self.image.url)
 		return self.image.url
 

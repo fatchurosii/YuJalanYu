@@ -53,7 +53,7 @@ header .banner-txt {
 
 .section-popular {
   background-color: #EFF9FA;
-  min-height: 1300px;
+  min-height: 1000px;
 }
 
 .section-popular .text-popular {
@@ -199,7 +199,7 @@ header .banner-txt {
   color: #fff;
 }
 
-.ccolor-heart {
+.color-heart {
   color: pink;
 }
 
@@ -214,5 +214,9 @@ h2 {
 p {
   font-size: 18px;
   color: #b1b1b1;
+}
+
+.section-more {
+  background-color: #EFF9FA;
 }
 /*# sourceMappingURL=main.css.map */
