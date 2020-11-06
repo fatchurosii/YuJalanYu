@@ -50,68 +50,24 @@
         <div class="col-8 text-left">
           <p class="text-popular-2">
            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor repellat tempora assumenda sit quibusdam voluptatibus quasi eos. Odit laboriosam necessitatibus cum laborum, velit eveniet repudiandae cumque ex laudantium deleniti quis.
-          </p>     
+          </p>
          </div>
+         {% for i in data %}
         <div class="col-sm-6 col-md-4 ">
           <div class="card-travel shadow-lg rounded" >
-            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
+              {% for img in i.images.all %}
+                <img class="card-img-top" src="{{i.images.getImage}}" alt="Card image cap">
+              {% endfor %}
             <div class="card-body">
-              <h5 class="card-title">Lombok</h5>
-              <p class="card-text">Nusa Tenggara Barat</p>
+              <h5 class="card-title">{{i.nama_paket}}</h5>
+              <p class="card-text">{{i.destinasi}} </p> 
               <a href="#" class="btn btn-details float-right">Details</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 ">
-          <div class="card-travel shadow-lg rounded" >
-            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Lombok</h5>
-              <p class="card-text">Nusa Tenggara Barat</p>
-              <a href="#" class="btn btn-details float-right">Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 ">
-          <div class="card-travel shadow-lg rounded">
-            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Lombok</h5>
-              <p class="card-text">Nusa Tenggara Barat</p>
-              <a href="#" class="btn btn-details float-right">Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 ">
-          <div class="card-travel shadow-lg rounded" >
-            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Lombok</h5>
-              <p class="card-text">Nusa Tenggara Barat</p>
-              <a href="#" class="btn btn-details float-right">Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 ">
-          <div class="card-travel shadow-lg rounded" >
-            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Lombok</h5>
-              <p class="card-text">Nusa Tenggara Barat</p>
-              <a href="#" class="btn btn-details float-right">Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 ">
-          <div class="card-travel shadow-lg rounded">
-            <img class="card-img-top" src="images/item-4 1.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Lombok</h5>
-              <p class="card-text">Nusa Tenggara Barat</p>
-              <a href="#" class="btn btn-details float-right">Details</a>
-            </div>
-          </div>
-        </div>
+         {% endfor %}
+      
+        
 
         <div class="col-md-4 col-sm-6">
           <div class="text-more">

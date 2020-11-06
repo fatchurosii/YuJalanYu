@@ -20,12 +20,13 @@ class modelPaket(models.Model):
 		return f"{self.id} - {self.nama_paket}"
 
 class imagesPaket(models.Model):
-	id_paket = models.ForeignKey('modelPaket', on_delete=models.CASCADE)
+	id_paket = models.ForeignKey('modelPaket',related_name='images', on_delete=models.CASCADE)
 	image = models.ImageField(null=True, blank=True)
 
 	def __str__(self):
 		return f"{self.id} - {self.id_paket}"
 
 	def getImage(self):
+		print(self.image.url)
 		return self.image.url
 
