@@ -53,18 +53,20 @@
           </p>
          </div>
          {% for i in data %}
-        <div class="col-sm-6 col-md-4 ">
-          <div class="card-travel shadow-lg rounded" >
-              {% for img in i.images.all %}
-                <img class="card-img-top" src="{{i.images.getImage}}" alt="Card image cap">
+          <div class="col-sm-6 col-md-4 ">
+            <div class="card-travel shadow-lg rounded" >
+              {% for x in img %}
+                {% if x.id_paket == i %}
+                  <img class="card-img-top" src="{{x.getImage}}" alt="Card image cap">
+                {% endif %}
               {% endfor %}
-            <div class="card-body">
-              <h5 class="card-title">{{i.nama_paket}}</h5>
-              <p class="card-text">{{i.destinasi}} </p> 
-              <a href="#" class="btn btn-details float-right">Details</a>
+              <div class="card-body">
+                <h5 class="card-title">{{i.nama_paket}}</h5>
+                <p class="card-text">{{i.destinasi}} </p> 
+                <a href="{% url "paket:detail" i.slug%}" class="btn btn-details float-right">Details</a>
+              </div>
             </div>
           </div>
-        </div>
          {% endfor %}
       
         
