@@ -53,16 +53,19 @@ class SearchPaket(ListView):
 class DetailPaket(DetailView):
 	model = modelPaket
 	template_name = 'paket/detailPaket.html'
-	extra_context = {
-			'title':'DETAIL',
-			'img_object': imagesPaket.objects.all(),
-		}
+	extra_context = None
 
 	def get_context_data(self, *args, **kwargs):
-	    self.kwargs.update(self.extra_context)
-	    kwargs = self.kwargs
-	    print(kwargs)
-	    return super().get_context_data(*args, **kwargs)
+		data = self.get_object()
+		header = imagesPaket.objects.filter(id_paket=data.id)
+		self.extra_context = {
+			'title':'DETAIL',
+			'header': header.get(id=1),
+			'img': imagesPaket.objects.filter(id_paket=data.id)
+		}
+		self.kwargs.update(self.extra_context)
+		kwargs = self.kwargs
+		return super().get_context_data(*args, **kwargs)
 
 
 
