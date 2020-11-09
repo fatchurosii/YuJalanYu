@@ -53,7 +53,7 @@ header .banner-txt {
 
 .section-popular {
   background-color: #EFF9FA;
-  min-height: 1000px;
+  min-height: 800px;
 }
 
 .section-popular .text-popular {
@@ -63,7 +63,7 @@ header .banner-txt {
 }
 
 .section-popular .text-popular-2 {
-  font-weight: normal;
+  font-weight: bold;
   font-size: 15px;
   margin-top: 130px;
 }
