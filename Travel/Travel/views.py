@@ -11,14 +11,8 @@ class homeView(View):
 		model = modelPaket.objects.order_by('-tgl_dibuat')
 		modelImg = imagesPaket.objects.all()
 		data = modelImg.values('id_paket').distinct()
-	
-		# model.images
-		dataPaket = []
-		dataImg = []
 		for x in model:
 			if x.tgl_berangkat > datetime.date.today():
-				dataPaket.append(x)
-				# dataImg.append(imagesPaket.objects.get(id_paket=x))
 		
 		for x in modelImg.values('id_paket').distinct():
 			print(x['id_paket'])
