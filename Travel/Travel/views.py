@@ -20,11 +20,9 @@ class homeView(View):
 				dataPaket.append(x)
 		
 		for x in modelImg.values('id_paket').distinct():
-			print(x['id_paket'])
 			oper = modelImg.filter(id_paket=x['id_paket'])
 			dataImg.append(oper[0])
 				
-		print(dataImg)
 		context = {
 		'title':"HOME",
 		'data':dataPaket,
