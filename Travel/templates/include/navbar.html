@@ -10,17 +10,22 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto mr-5 mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{% url "home" %}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Travel Package</a>
+        <a class="nav-link" href="{% url "paket:view" %}">Travel Package</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Testimonials</a>
+        <a class="nav-link" href="{% url "home" %}">Testimonials</a>
       </li>
      
     </ul>
-      <button class="btn btn-login mr-5" type="submit">Masuk</button>
+    {% if user.is_authenticated %}
+        <a class="btn btn-login mr-5" href="{% url "akun:logout" %}">KELUAR</a>
+        {% else %}
+        <a class="btn btn-login mr-5" href="{% url "akun:login" %}?next={{request.path|urlencode}}">MASUK</a>
+    {% endif %}
+      
     </form>
   </div>
 </nav>

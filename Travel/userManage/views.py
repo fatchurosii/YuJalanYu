@@ -11,6 +11,7 @@ class Login(LoginView):
 	extra_context = {
 		'title':'LOGIN'
 	}
+	query_string = True
 
 	def get(self, request, *args, **kwargs):
 		if self.request.user.is_authenticated:
@@ -23,7 +24,12 @@ class Login(LoginView):
 	    return super().get_context_data()
 
 	def get_success_url(self):
-		return self.success_url
+		url = self.request.GET.get('next', False)
+		if url is False:
+			return self.success_url
+		else:
+			self.success_url = self.request.GET['next']
+			return self.success_url
 
 class Logout(LogoutView):
 	next_page = reverse_lazy('akun:login')
