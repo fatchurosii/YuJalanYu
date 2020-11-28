@@ -18,18 +18,18 @@
 <header>
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4">
           <p class="banner-txt">
             Find Your Travel
             <br>
             Local Expert
           </p>
-          <a href="{% url "paket:search" %}" class="btn btn-get-started mt-4 mr-4">Get Started</a>
+          <a href="{% url 'paket:search' %}" class="btn btn-get-started mt-4 mr-4">Get Started</a>
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center d-none d-lg-block">
           <img src="{% static 'images/line.png' %}" alt="">
         </div>
-        <div class="col-md-4 ml-auto">
+        <div class="col-md-4 d-none d-lg-block ml-auto">
           <img src="{% static 'images/BannerTextLogo.png' %}" alt="">
         </div>
       </div>
@@ -40,14 +40,14 @@
   <section class="section-popular" id="popular">
     <div class="container">
       <div class="row">
-        <div class="col-4 text-left">
+        <div class="col-6 text-left">
          <p class="text-popular">
           Popular Travel
           <br>
           Itineraries
          </p>     
         </div>
-        <div class="col-8 text-left">
+        <div class="col-6 text-left">
           <p class="text-popular-2">
            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor repellat tempora assumenda sit quibusdam voluptatibus quasi eos. Odit laboriosam necessitatibus cum laborum, velit eveniet repudiandae cumque ex laudantium deleniti quis.
           </p>
@@ -57,13 +57,13 @@
             <div class="card-travel shadow-lg rounded" >
               {% for x in img %}
                 {% if x.id_paket == i %}
-                  <img class="card-img-top" src="{{x.getImage}}" alt="Card image cap">
+                  <img class="card-img-top" src="{{x.getImage}}" width="200px" alt="Card image cap">
                 {% endif %}
               {% endfor %}
               <div class="card-body">
                 <h5 class="card-title">{{i.nama_paket}}</h5>
                 <p class="card-text">{{i.destinasi}} </p> 
-                <a href="{% url "paket:detail" i.slug%}" class="btn btn-details float-right">Details</a>
+                <a href="{% url 'paket:detail' i.slug%}" class="btn btn-details float-right">Details</a>
               </div>
             </div>
           </div>
@@ -75,14 +75,14 @@
   <section class="section-more">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-5 col-5">
           <div class="text-more">
              Find More 
             <br>
             <div class="text-more-2">Itineraries </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-5 ">
           <a href="" class="btn btn-more">More Itineraries</a>
         </div>
       </div>
