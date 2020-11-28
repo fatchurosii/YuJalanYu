@@ -2,20 +2,82 @@
 {% load static %}
 
 {% block content %}
-	<h1>Home / Travel Package</h1>
-	<form action="{% url "paket:search" %}">
-		<input type="text" name="search" placeholder="Search">
-		<input type="submit" value="Search">
-	</form>
-	<hr>
-	{% for i in paket_object %}
-		<h3>Nama Paket : {{i.nama_paket}}</h3>
-		<h4>Destinasi : {{i.destinasi}}</h4>
-		<p>{{i.about|truncatechars:15}} <a href="{% url 'paket:detail' i.slug %}">Selengkapnya</a></p>
-		{% for img in img_object %}
-			{% if img.id_paket.id == i.id %}
-				<img src="{{img.image.url}}" class="rounded-lg">
-			{% endif %}
-		{% endfor %}
+
+<main>
+    
+    <section class="section-package-content mt-5">
+        <div class="container">
+         <div class="row">
+             <div class="row p-0">
+                 <nav>
+                     <ol class="breadcrumb">
+                         <li class="breadcrumb-item">
+                             Home
+                         </li>
+                         <li class="breadcrumb-item active">
+                          Paket Travel
+                      </li>
+                     </ol>
+                 </nav>
+             </div>
+         </div>
+         <!-- <form action="">
+			<input type="text" name="search" placeholder="Search">
+			<input type="submit" value="Search">
+		</form > -->
+		<form action="{% url 'paket:search' %}">
+         <div class="input-group">
+			<input 
+			class="form-control" 
+			type="text"
+			name="search" 
+			placeholder="Search" 
+			aria-label="Search">
+            <div class="input-group-append">
+              <span >
+				  <button class="btn btn-search" type="submit">
+					<i class="fas fa-search icon-color"
+                    aria-hidden="true"></i>
+				  </button>
+                </span>
+            </div>
+		  </div>
+		</form>   
+    </div>
+    
+    </section>
+	<!-- {% for i in paket_object %}
+	<h3>Nama Paket : {{i.nama_paket}}</h3>
+	<h4>Destinasi : {{i.destinasi}}</h4>
+	<p>{{i.about|truncatechars:15}} <a href="{% url 'paket:detail' i.slug %}">Selengkapnya</a></p>
+	{% for img in img_object %}
+		{% if img.id_paket.id == i.id %}
+			<img src="{{img.image.url}}" class="rounded-lg">
+		{% endif %}
 	{% endfor %}
+{% endfor %} -->
+    <section class="section-package">
+        <div class="container">
+          <div class="row">
+            <div class=" col-md-4 ">
+              <div class="card-travel shadow-lg rounded" >
+				{% for img in img_object %}
+				{% if img.id_paket.id == i.id %}
+				<img class="card-img-top" src="{{img.image.url}}" height="200px" alt="Card image cap">
+				{% endif %}
+				{% endfor %}
+				{% for i in paket_object %}
+                <div class="card-body">
+                  <h5 class="card-title">{{i.nama_paket}}</h5>
+                  <p class="card-text">{{i.destinasi}}</p>
+				  <p class="price-text mt-5">{{i.harga}} K / Person</p>
+				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
+				  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</main>
 {% endblock content %}

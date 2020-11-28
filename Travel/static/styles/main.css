@@ -225,4 +225,48 @@ p {
   font-size: 18px;
   color: #b1b1b1;
 }
+
+.modal-title {
+  color: #0BA0AC !important;
+  font-size: 50px;
+  margin-left: 20px;
+}
+
+.modal-content {
+  border-radius: 10px;
+  min-height: 500px;
+  border: none;
+}
+
+.modal-body label {
+  color: #0BA0AC;
+}
+
+.modal-body img {
+  justify-items: center;
+}
+
+.modal-body .form-group input {
+  font-size: 20px;
+}
+
+.modal-body .form-control {
+  border-radius: 10px;
+  border-color: #0BA0AC;
+  height: 50px;
+}
+
+.modal-body .btn-login-modal {
+  border-radius: 10px;
+  background-color: #0BA0AC;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  width: 50%;
+  margin-top: 30px;
+}
+
+.modal-body .modal-login {
+  margin-top: 30px;
+}
 /*# sourceMappingURL=main.css.map */
