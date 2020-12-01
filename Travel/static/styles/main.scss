@@ -286,3 +286,24 @@ p{
        margin-top: 30px;
    }
 }   
+
+.card-size{
+    min-height: 250px  ;
+}
+.header-text{
+    font-weight: bold;
+    h2{
+       font-size: 30px;
+    }
+    
+}
+
+.btn-home-page{
+    background-color: $maincolor;
+    color: #fff;
+    &:hover{
+       background-color: $hovercolor;
+       color: #fff;         
+    }
+
+}

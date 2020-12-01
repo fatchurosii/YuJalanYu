@@ -70,10 +70,11 @@ header .banner-txt {
 
 .card-travel {
   margin-top: 50px;
+  min-height: 300px;
 }
 
 .card-body {
-  min-height: 200px;
+  min-height: 300px;
 }
 
 .card-body .card-title {
