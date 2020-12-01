@@ -20,6 +20,7 @@
       </li>
      
     </ul>
+<<<<<<< HEAD
     {% if user.is_authenticated %}
         <a class="btn btn-login mr-5" href="{% url 'akun:logout' %}">KELUAR</a>
         {% else %}
@@ -114,5 +115,13 @@
         </div>
     </div>
   </div>
+=======
+   
+        <button class="btn btn-login mr-5" data-toggle="modal" data-target="#modalLogin" href="#">MASUK</button>
+    
+      
+    </form>
+    {% include './modal.html' %}
+>>>>>>> 93bc1fbf581e3be5d3ec2f4278eeca1bce31dc55
   </div>
 </nav>
