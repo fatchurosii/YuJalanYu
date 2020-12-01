@@ -16,9 +16,11 @@ class ListPaket(ListView):
 			}
 
 	def get_context_data(self, **kwargs):
-	    self.kwargs.update(self.extra_context)
-	    kwargs = self.kwargs
-	    return super().get_context_data()
+		data = modelPaket.objects.all()
+		print(data[2].images)
+		self.kwargs.update(self.extra_context)
+		kwargs = self.kwargs
+		return super().get_context_data()
 
 class SearchPaket(ListView):
 	template_name = 'paket/search.html'
