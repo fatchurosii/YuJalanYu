@@ -12,7 +12,6 @@ class ListPaket(ListView):
 	context_object_name = 'paket_object'
 	extra_context = {
 			'title':'PAKET TRAVEL',
-			'img_object': imagesPaket.objects.all()
 			}
 
 	def get_context_data(self, **kwargs):

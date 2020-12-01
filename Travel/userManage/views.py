@@ -7,8 +7,8 @@ from .form import formUser
 
 # Create your views here.
 class Login(LoginView):
-	model = modelUser
-	form_class = formUser
+	# model = modelUser
+	# form_class = formUser
 	template_name = 'User/login.html'
 	success_url = reverse_lazy('home')
 
@@ -36,7 +36,7 @@ class Login(LoginView):
 			return self.success_url
 
 class Logout(LogoutView):
-	next_page = reverse_lazy('akun:login')
+	next_page = reverse_lazy('home')
 
 
 
