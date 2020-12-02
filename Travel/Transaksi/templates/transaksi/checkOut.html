@@ -1,14 +1,32 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	{% include '/templates/include/css.html' %}
+	{% include 'include/css.html' %}
 	<title>{{title}}</title>
 </head>
 <body>
-	{% include '/templates/include/navbar-alternate.html' %}
+	{% include 'include/navbar.html' %}
 
+	<div>
+		{% with paket_object.images.all|first as image %}
+		    <img src="{{image.getImage}}">
+		{% endwith %}
+		{{paket_object.nama_paket}}
+		<h1>
+			IDR {{paket_object.harga|intcomma}}
+		</h1>
+		
+		<form method="POST">
+			<label>Jumlah</label>
+			<input type="number" value="Jumlah">
+			<input type="submit">
+		</form>
+	</div>
+	
+	
 </body>
 </html>

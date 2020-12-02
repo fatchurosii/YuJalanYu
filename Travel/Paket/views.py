@@ -6,55 +6,43 @@ from django.db.models import Q
 from .models import modelPaket, imagesPaket
 
 # Create your views here.
-class ListPaket(ListView):
+
+class SearchPaket(ListView):
 	model = modelPaket
 	template_name = 'paket/viewPaket.html'
 	context_object_name = 'paket_object'
 	extra_context = {
-			'title':'PAKET TRAVEL',
-			}
-
-	def get_context_data(self, **kwargs):
-		data = modelPaket.objects.all()
-		print(data[2].images)
-		self.kwargs.update(self.extra_context)
-		kwargs = self.kwargs
-		return super().get_context_data()
-
-class SearchPaket(ListView):
-	template_name = 'paket/search.html'
-	model = modelPaket
-	extra_context = {
 		'title':'Search',
 		'error':None,
-		'img':imagesPaket.objects.all()
 	}
 	query_string = True
 
 	def get_queryset(self):
-		url = self.request.GET.get('search', False)
-		if url != False:
-			data = self.model.objects.filter(
-				Q(nama_paket__icontains=self.request.GET['search'])| 
-				Q(destinasi__icontains=self.request.GET['search'])
-				)
-			if not data:
-				self.extra_context = {
-					'title':'Search',
-					'error':"Data Tidak diTemukan"
-				}
-				self.queryset = None
-				return self.queryset
+		if self.query_string:
+			url = self.request.GET.get('search', False)
+			if url != False:
+				self.queryset = self.model.objects.filter(
+					Q(nama_paket__icontains=self.request.GET['search'])| 
+					Q(destinasi__icontains=self.request.GET['search'])
+					)
+				if not self.queryset:
+					self.extra_context = {
+						'title':'Search',
+						'error':"Data Tidak diTemukan"
+					}
+					self.queryset = None
+					return self.queryset
+				else:
+					return self.queryset
 			else:
-				return data
+				self.query_string = False
 		else:
-			print("Masuk sebagai False")
-			self.query_string = False
-				
-
+			return super().get_queryset();
+		
 	def get(self, *args, **kwargs):
-		if self.request.GET.get('search', False) is False:
-			return HttpResponseRedirect(reverse('paket:view'))
+		if self.query_string:
+			if self.request.GET.get('search', False) is False:
+				return HttpResponseRedirect(reverse('paket:view'))
 		return super().get(self.request, *args, **kwargs)
 
 
