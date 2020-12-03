@@ -18,8 +18,9 @@ class checkOut(DetailView):
 	def post(self):
 		snap = midtransclient.Snap(
 			    is_production=False,
-			    server_key='YOUR_SERVER_KEY',
-			    client_key='YOUR_CLIENT_KEY'
+			    server_key='SB-Mid-server-uoBpcWvYMzSk72FbVUEUcPox',
+			    client_key='SB-Mid-client-EOjbQuFJwheGValW'
 				)
+		print("post")
 
-		
+

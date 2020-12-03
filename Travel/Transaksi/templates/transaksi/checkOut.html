@@ -21,8 +21,9 @@
 		</h1>
 		
 		<form method="POST">
+			{% csrf_token %}
 			<label>Jumlah</label>
-			<input type="number" value="Jumlah">
+			<input type="number" value="Jumlah" name="jumlah">
 			<input type="submit">
 		</form>
 	</div>
