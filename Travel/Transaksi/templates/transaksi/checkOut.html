@@ -12,18 +12,19 @@
 	{% include 'include/navbar.html' %}
 
 	<div>
-		{% with paket_object.images.all|first as image %}
+		{% with data.images.all|first as image %}
 		    <img src="{{image.getImage}}">
 		{% endwith %}
-		{{paket_object.nama_paket}}
+		{{data.nama_paket}}
 		<h1>
-			IDR {{paket_object.harga|intcomma}}
+			IDR {{data.harga|intcomma}}
 		</h1>
 		
-		<form method="POST">
+		<form method="POST" action="{% url "transaksi:url_success" %}">
 			{% csrf_token %}
 			<label>Jumlah</label>
-			<input type="number" value="Jumlah" name="jumlah">
+			{{form.jumlah}}
+			<input type="hidden" name="{{form.paket.label}}" value={{data.slug}}>
 			<input type="submit">
 		</form>
 	</div>
