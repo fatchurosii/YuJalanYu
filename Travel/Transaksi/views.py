@@ -31,8 +31,8 @@ class checkOut(CreateView):
 		    server_key='SB-Mid-server-uoBpcWvYMzSk72FbVUEUcPox',
 		    client_key='SB-Mid-client-EOjbQuFJwheGValW'
 			)
-		print("kwargs : ", self.slug)
 		print("request : ", request.POST)
+		print("token : ", request.POST['csrfmiddlewaretoken'])
 
 		return HttpResponseRedirect(reverse('paket:view'))
 
