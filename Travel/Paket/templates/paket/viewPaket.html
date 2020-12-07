@@ -1,5 +1,6 @@
 {% extends "PaketView.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -58,7 +59,7 @@
                     {% endwith %}
                     <h5 class="card-title">{{i.nama_paket}}</h5>
                     <p class="card-text">{{i.destinasi}}</p>
-          				  <p class="price-text mt-5">{{i.harga}} K / Person</p>
+          				  <p class="price-text mt-5">{{i.harga|intcomma}} K / Person</p>
           				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
                   </div>
                 </div>
