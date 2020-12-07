@@ -2,7 +2,7 @@ import midtransclient
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import DetailView, CreateView
+from django.views.generic import DetailView, CreateView, ListView
 from django.urls import reverse, reverse_lazy
 from .models import modelTransaksi
 from django.contrib.auth.models import User
@@ -51,5 +51,34 @@ class checkOut(CreateView):
 		print("request : ", request.POST)
 		print("token : ", token)
 
-		# save = self.form_class({'paket': paket, 'user': user, 'jumlah': })
-		return HttpResponseRedirect(reverse('paket:view'))
+		data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
+								'totalHarga': (jumlah * paket.harga), 'token': token, 'status': 'pendding'})
+		data.save()
+		print(data)
+		return HttpResponseRedirect(reverse('transaksi:final', token=data.token))
+
+class DetailCheckOut(DetailView):
+	model = modelTransaksi
+	context_object_name = "object"
+	template_name = 'transaksi/checkOut_Final.html'
+	extra_context = {
+		'title': "CHECKOUT FINAL"
+	}
+	pk_url_kwarg = 'token'
+	query_string = True
+
+	def get_queryset(self):
+		url = self.request.GET.get('token', False)
+		if not url:
+			print(url)
+			self.queryset = self.model.objects.get(token=url)
+			return self.queryset
+		else:
+			self.queryset = None
+			return self.queryset
+
+	def get(self, *args, **kwargs):
+		if self.query_string:
+			if self.request.GET.get('token', False) is False:
+				return HttpResponseRedirect(reverse('paket:view'))
+		return super().get(self.request, *args, **kwargs)
