@@ -7,16 +7,7 @@ from .models import modelPaket, imagesPaket
 import datetime
 
 
-<<<<<<< HEAD
-	def get_context_data(self, **kwargs):
-		data = modelPaket.objects.all()
-		print(data[2].images)
-		self.kwargs.update(self.extra_context)
-		kwargs = self.kwargs
-		return super().get_context_data()
-=======
 # Create your views here.
->>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
 
 class SearchPaket(ListView):
     model = modelPaket

@@ -7,13 +7,8 @@ from .form import formUser
 
 # Create your views here.
 class Login(LoginView):
-<<<<<<< HEAD
-	model = modelUser
-	form_class = formUser
-=======
 	# model = modelUser
 	# form_class = formUser
->>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
 	template_name = 'User/login.html'
 	success_url = reverse_lazy('home')
 
