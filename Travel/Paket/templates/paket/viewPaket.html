@@ -1,5 +1,6 @@
 {% extends "PaketView.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -21,19 +22,16 @@
                  </nav>
              </div>
          </div>
-         <!-- <form action="">
-			<input type="text" name="search" placeholder="Search">
-			<input type="submit" value="Search">
-		</form > -->
+
 		<form action="{% url 'paket:search' %}">
          <div class="input-group">
 			<input 
-			class="form-control" 
-			type="text"
-			name="search" 
-			placeholder="Search" 
-			aria-label="Search">
-            <div class="input-group-append">
+    			class="form-control" 
+    			type="text"
+    			name="search" 
+    			placeholder="Search" 
+    			aria-label="Search">
+          <div class="input-group-append">
               <span >
 				  <button class="btn btn-search" type="submit">
 					<i class="fas fa-search icon-color"
@@ -44,21 +42,17 @@
 		  </div>
 		</form>   
     </div>
-    
     </section>
-	<!-- {% for i in paket_object %}
-	<h3>Nama Paket : {{i.nama_paket}}</h3>
-	<h4>Destinasi : {{i.destinasi}}</h4>
-	<p>{{i.about|truncatechars:15}} <a href="{% url 'paket:detail' i.slug %}">Selengkapnya</a></p>
-	{% for img in img_object %}
-		{% if img.id_paket.id == i.id %}
-			<img src="{{img.image.url}}" class="rounded-lg">
-		{% endif %}
-	{% endfor %}
-{% endfor %} -->
+
     <section class="section-package">
         <div class="container">
           <div class="row">
+<<<<<<< HEAD
+=======
+          {% if error is not None %}
+            <h1>{{error}}</h1>
+          {% else %}
+>>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
             {% for i in paket_object %}  
             <div class=" col-md-4 ">
               <div class="card-travel shadow-lg rounded" >
@@ -68,12 +62,20 @@
                     {% endwith %}
                     <h5 class="card-title">{{i.nama_paket}}</h5>
                     <p class="card-text">{{i.destinasi}}</p>
+<<<<<<< HEAD
           				  <p class="price-text mt-5">{{i.harga}} K / Person</p>
+=======
+          				  <p class="price-text mt-5">{{i.harga|intcomma}} K / Person</p>
+>>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
           				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
                   </div>
                 </div>
             </div>
                {% endfor %} 
+<<<<<<< HEAD
+=======
+      {% endif %}
+>>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 {% extends "PaketView.html" %}
+{% load static %}
 {% load humanize %}
 
 {% block content %}
@@ -35,10 +36,8 @@
 						<h1>{{object.nama_paket}}</h1>
 						<p>{{object.destinasi}}	</p>
 						<div class="gallery ml-2">
-							{% with img|first as pertama %}
+							{% with object.images.all|first as pertama %}
 							<div class="xzoom-container">
-								
-								
 								   <img 
 									src="{{pertama.getImage}}" 
 									class="xzoom"
@@ -46,12 +45,11 @@
 									xoriginal="{{pertama.id}}"> 
 							</div>
 							<div class="xzoom-thumbs mt-2">
-								{% for x in img %}
-								
+								{% for x in object.images.all %}
 								<img 
 									src="{{x.getImage}}" 
 									class="xzoom-gallery" 
-									width="120" 
+									width="120"
 									xpreview="{{pertama.id}}">
 								</a>
 								{% endfor %}
@@ -90,7 +88,7 @@
 				  </table>
 		  </div>
 		  <div class="join-container">
-			  <a href="{% url "transaksi:checkOut" object.slug%}" class="btn btn-block btn-join-now mt-3 py-2">
+			  <a href="{% url 'transaksi:checkOut' object.slug%}" class="btn btn-block btn-join-now mt-3 py-2">
 				  Join Now
 			  </a>
 		   </div>

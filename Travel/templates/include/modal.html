@@ -12,7 +12,7 @@
               </div>
             <!-- </div> -->
             <div class="modal-header justify-content-center border-bottom-0">
-              <img src="{% static 'images/logo-modal.png' %}" alt="Logo Modal">
+              <img src="{% static 'images/logo_modal.png' %}" alt="Logo Modal">
             </div>
         
             <!--Body-->
@@ -20,10 +20,11 @@
             <div class="modal-body mx-4">
                 <!--Body-->
           
-                <form class="modal-form">
+                <form class="modal-form" method="POST" action="{% url "akun:login" %}?next={{request.path|urlencode}}">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control " placeholder="Masukkan Email Anda">
+                        <input type="text" name="username" class="form-control " placeholder="Masukkan Email Anda">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -52,7 +53,7 @@
             </div>
           <!-- </div> -->
           <div class="modal-header justify-content-center border-bottom-0">
-            <img src="images/logo-modal.png" alt="">
+            <img src="{% static "images/logo_modal.png" %}" alt="">
           </div>
             <!--Body-->
             <div class="modal-body mx-4">
