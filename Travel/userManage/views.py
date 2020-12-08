@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from .models import modelUser
+from .form import formUser
 
 # Create your views here.
 class Login(LoginView):
+	model = modelUser
+	form_class = formUser
 	template_name = 'User/login.html'
 	success_url = reverse_lazy('home')
 

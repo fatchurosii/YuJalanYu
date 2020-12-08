@@ -59,23 +59,21 @@
     <section class="section-package">
         <div class="container">
           <div class="row">
+            {% for i in paket_object %}  
             <div class=" col-md-4 ">
               <div class="card-travel shadow-lg rounded" >
-				{% for img in img_object %}
-				{% if img.id_paket.id == i.id %}
-				<img class="card-img-top" src="{{img.image.url}}" height="200px" alt="Card image cap">
-				{% endif %}
-				{% endfor %}
-				{% for i in paket_object %}
-                <div class="card-body">
-                  <h5 class="card-title">{{i.nama_paket}}</h5>
-                  <p class="card-text">{{i.destinasi}}</p>
-				  <p class="price-text mt-5">{{i.harga}} K / Person</p>
-				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
-				  {% endfor %}
+                  <div class="card-body">
+                    {% with i.images.all|first as img_pertama %}
+                    <img class="card-img-top" src="{{img_pertama.getImage}}" height="200px" alt="Card image cap">
+                    {% endwith %}
+                    <h5 class="card-title">{{i.nama_paket}}</h5>
+                    <p class="card-text">{{i.destinasi}}</p>
+          				  <p class="price-text mt-5">{{i.harga}} K / Person</p>
+          				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
+                  </div>
                 </div>
-              </div>
             </div>
+               {% endfor %} 
           </div>
         </div>
       </section>
