@@ -67,11 +67,17 @@ class SearchPaket(ListView):
 class DetailPaket(FormMixin, DetailView):
     form_class = TransaksiForm
     model = modelPaket
+    initial={}
     template_name = 'paket/detailPaket.html'
     extra_context = {
         'title': 'DETAIL',
     }
-    def get_context_data(self, **kwargs):
-        print(kwargs['object'].slug)
-        self.paket = kwargs['object']
-        return super().get_context_data(**kwargs)
+
+    def get_initial(self):
+        dataPaket = self.model.objects.get(slug=self.kwargs['slug'])
+        print(self.request.user)
+        self.initial={
+            'paket':dataPaket.slug,
+            'user':self.request.user.email
+        }
+        return self.initial.copy()

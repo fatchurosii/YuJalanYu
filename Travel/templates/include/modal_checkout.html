@@ -15,14 +15,15 @@
             <h2 class="header-modal-checkout ">Order Summary <img src="{% static "images/Vector.png" %}"</>
           </div>
             <!--Body-->
-            <form method="get" action="{% url "transaksi:checkOut" %}?paket={{object.slug}}">
+            <form method="post" action="{% url "transaksi:checkOut" %}">
               {% csrf_token %}
             <div class="modal-body ">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-md-4 col-sm-6">Package Name</div>
-                    <div class="col-md-6 col-sm-6  price">{{object.nama_paket}} - IDR {{object.harga|intcomma}}
+                    <div class="col-md-4 col-sm-6">{{object.nama_paket}}</div>
+                    <div class="col-md-6 col-sm-6  price">IDR {{object.harga|intcomma}}
                       {{form.paket}}
+                      {{form.user}}
                     </div>
                   </div>
                   <div class="row mt-3">

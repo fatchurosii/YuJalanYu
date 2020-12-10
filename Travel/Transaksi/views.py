@@ -30,54 +30,69 @@ class checkOut(CreateView):
 	# 	kwargs = self.kwargs
 	# 	return super().get_context_data(**kwargs)
 
-	def get(self, request): 
-		print(self.request.GET)
-		return self.post(self.request)
+	# def get(self, request): 
+	# 	print("Get")
+	# 	print(self.request.GET.get('paket', False))
+	# 	return self.post(self.request)
 
 	def post(self, request):
-		print("POST")
-		print(request.POST)
-		print(request)
-		# paket = modelPaket.objects.get(slug=request.POST['Paket'])
-		# user = User.objects.get(email=request.POST['User'])
-		# snap = midtransclient.Snap(
-		# 	is_production=False,
-		# 	server_key='SB-Mid-server-uoBpcWvYMzSk72FbVUEUcPox',
-		# 	client_key='SB-Mid-client-EOjbQuFJwheGValW')
+		if request.POST.get('csrfmiddlewaretoken', False) is not False:
+			paket = modelPaket.objects.get(slug=request.POST['paket'])
+			user = User.objects.get(email=request.POST['user'])
+			snap = midtransclient.Snap(
+			is_production=False,
+			server_key='SB-Mid-server-uoBpcWvYMzSk72FbVUEUcPox',
+			client_key='SB-Mid-client-EOjbQuFJwheGValW')
 
-		# jumlah = int(request.POST['jumlah'])
-		# param = {
-		# 	"transaction_details": {
-		# 		"order_id": f"order-{request.POST['csrfmiddlewaretoken'][0:5]}",
-		# 		"gross_amount": (jumlah * paket.harga),
-		# 		"customer_email": user.email
-		# 	},
-		# 	"credit_card": {
-		# 		"secure": True
-		# 	}}
-		# print(param)
-		# token = snap.create_transaction_token(param)
-		# print("request : ", request.POST)
-		# print("token : ", token)
+			jumlah = int(request.POST['jumlah'])
+			param = {
+				"transaction_details": {
+					"order_id": f"order-{request.POST['csrfmiddlewaretoken'][0:5]}",
+					"gross_amount": (jumlah * paket.harga),
+					"customer_email": user.email
+				},
+				"credit_card": {
+					"secure": True
+				}}
+			print(param)
+			token = snap.create_transaction_token(param)
+			print("request : ", request.POST)
+			print("token : ", token)
 
-		# data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
-		# 						'totalHarga': (jumlah * paket.harga), 'token': token, 'status': 'pendding'})
-		# # data.save()
-		# # print(data)
-		return HttpResponseRedirect(reverse('paket:view'))
+			data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
+									'totalHarga': (jumlah * paket.harga), 'token': token, 'status': 'pendding'})
+			data.save()
+			# print(data['token'].data)
+			return HttpResponseRedirect("%s?token={}".format(data['token'].data) % (reverse('transaksi:final')))
+		else:
+			print("false")
+			return HttpResponseRedirect(reverse('paket:view'))
+
+		
+		
 
 class DetailCheckOut(DetailView):
 	model = modelTransaksi
 	context_object_name = "object"
 	template_name = 'transaksi/checkOut_Final.html'
-	extra_context = {
-		'title': "CHECKOUT FINAL"
-	}
+	extra_context = None
 	pk_url_kwarg = 'token'
 	query_string = True
 
-	def get_queryset(self):
+	def get_context_data(self, *args,**kwargs):
+	    self.extra_context = {
+	    	'title': "CHECKOUT FINAL",
+	    	'token': self.request.GET.get('token')
+	    }
+	    print(self.extra_context)
+	    self.kwargs.update(self.extra_context)
+	    kwargs = self.kwargs
+	    return super().get_context_data()
+
+	def get_object(self):
 		url = self.request.GET.get('token', False)
+		print(url)
+		# return super().get_queryset()
 		if not url:
 			print(url)
 			self.queryset = self.model.objects.get(token=url)
@@ -87,6 +102,7 @@ class DetailCheckOut(DetailView):
 			return self.queryset
 
 	def get(self, *args, **kwargs):
+		# print(self.request.GET.get('token', False))
 		if self.query_string:
 			if self.request.GET.get('token', False) is False:
 				return HttpResponseRedirect(reverse('paket:view'))

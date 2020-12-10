@@ -29,7 +29,32 @@
 			<input type="submit">
 		</form>
 	</div>
+	<button id="pay-button">Pay!</button>
+    <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>
 	
+	<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-EOjbQuFJwheGValW">
 	
+	</script>
+    <script type="text/javascript">
+    	console.log('ini token : {{token}}');
+    	var token = "{{token}}"
+      document.getElementById('pay-button').onclick = function(){
+        // SnapToken acquired from previous step
+        snap.pay(token, {
+          // Optional
+          onSuccess: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          },
+          // Optional
+          onPending: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          },
+          // Optional
+          onError: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          }
+        });
+      };
+    </script>
 </body>
 </html>

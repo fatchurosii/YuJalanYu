@@ -10,7 +10,8 @@ class TransaksiForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
         	"jumlah": forms.NumberInput(attrs={'min': 1}),
-        	"paket": forms.TextInput(attrs={'type':'hidden'})
+        	"paket": forms.TextInput(attrs={'type':'hidden'}),
+        	"user": forms.TextInput(attrs={'type':'hidden'}),
         }
 
 

@@ -15,9 +15,3 @@ class modelTransaksi(models.Model):
 	def __str__(self):
 		return f"{self.id}-{self.paket}"
 
-	def getPaket(self):
-		return str(self.paket.nama_paket)
-
-	def getUser(self):
-		return self.user
-
