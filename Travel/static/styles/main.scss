@@ -307,3 +307,33 @@ p{
     }
 
 }
+
+
+.input-person{
+    input{
+        width: 50px;
+        margin-left: 115px;
+    }
+    
+}
+
+.price{
+    margin-left: 150px;
+}
+
+.total-price{
+    h2{
+        font-size: 30px;
+    }
+}
+
+.btn-checkout{
+    margin-top: 100px;
+    width: 200px;
+    background-color: $maincolor;
+    color: #fff;
+    &:hover{
+        background-color: $hovercolor;
+        color: #fff;
+    }
+}

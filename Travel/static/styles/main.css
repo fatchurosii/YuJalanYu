@@ -269,4 +269,51 @@ p {
 .modal-body .modal-login {
   margin-top: 30px;
 }
+
+.card-size {
+  min-height: 250px;
+}
+
+.header-text {
+  font-weight: bold;
+}
+
+.header-text h2 {
+  font-size: 30px;
+}
+
+.btn-home-page {
+  background-color: #0BA0AC;
+  color: #fff;
+}
+
+.btn-home-page:hover {
+  background-color: #2dbac4;
+  color: #fff;
+}
+
+.input-person input {
+  width: 50px;
+  margin-left: 115px;
+}
+
+.price {
+  margin-left: 150px;
+}
+
+.total-price h2 {
+  font-size: 30px;
+}
+
+.btn-checkout {
+  margin-top: 100px;
+  width: 200px;
+  background-color: #0BA0AC;
+  color: #fff;
+}
+
+.btn-checkout:hover {
+  background-color: #2dbac4;
+  color: #fff;
+}
 /*# sourceMappingURL=main.css.map */
