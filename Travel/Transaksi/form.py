@@ -8,5 +8,9 @@ class TransaksiForm(forms.ModelForm):
         """Meta definition for Transaksiform."""
         model = modelTransaksi
         fields = "__all__"
+        widgets = {
+        	"jumlah": forms.NumberInput(attrs={'min': 1}),
+        	"paket": forms.TextInput(attrs={'type':'hidden'})
+        }
 
 

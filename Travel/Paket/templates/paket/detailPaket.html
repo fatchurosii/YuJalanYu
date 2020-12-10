@@ -88,10 +88,11 @@
 				  </table>
 		  </div>
 		  <div class="join-container">
-			  <a href="{% url 'transaksi:checkOut' object.slug%}" class="btn btn-block btn-join-now mt-3 py-2">
+			  <button data-toggle="modal" data-target="#modalCheckout" class="btn btn-block btn-join-now mt-3 py-2">
 				  Join Now
-			  </a>
+			  </button>
 		   </div>
+		   {% include "include/modal_checkout.html" %}
 	   </div>
 	  </div>      
 	  </div>

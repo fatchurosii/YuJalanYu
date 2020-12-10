@@ -6,7 +6,7 @@ from .views import checkOut, DetailCheckOut
 app_name = 'transaksi'
 urlpatterns = [
 	re_path(r'^$', checkOut.as_view(), name='url_success'),
-	re_path(r'^(?P<slug>[\w-]+)$', checkOut.as_view(), name='checkOut'),
+	re_path(r'^$', checkOut.as_view(), name='checkOut'),
 	re_path(r'^final/$', DetailCheckOut.as_view(), name='final')
 ]
 

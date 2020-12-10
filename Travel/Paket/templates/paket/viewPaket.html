@@ -47,35 +47,25 @@
     <section class="section-package">
         <div class="container">
           <div class="row">
-<<<<<<< HEAD
-=======
           {% if error is not None %}
             <h1>{{error}}</h1>
           {% else %}
->>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
             {% for i in paket_object %}  
-            <div class=" col-md-4 ">
-              <div class="card-travel shadow-lg rounded" >
-                  <div class="card-body">
-                    {% with i.images.all|first as img_pertama %}
-                    <img class="card-img-top" src="{{img_pertama.getImage}}" height="200px" alt="Card image cap">
-                    {% endwith %}
-                    <h5 class="card-title">{{i.nama_paket}}</h5>
-                    <p class="card-text">{{i.destinasi}}</p>
-<<<<<<< HEAD
-          				  <p class="price-text mt-5">{{i.harga}} K / Person</p>
-=======
-          				  <p class="price-text mt-5">{{i.harga|intcomma}} K / Person</p>
->>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
-          				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
+              <div class=" col-md-4 ">
+                <div class="card-travel shadow-lg rounded" >
+                    <div class="card-body">
+                      {% with i.images.all|first as img_pertama %}
+                      <img class="card-img-top" src="{{img_pertama.getImage}}" height="200px" alt="Card image cap">
+                      {% endwith %}
+                      <h5 class="card-title">{{i.nama_paket}}</h5>
+                      <p class="card-text">{{i.destinasi}}</p>
+            				  <p class="price-text mt-5">{{i.harga|intcomma}} K / Person</p>
+            				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
+                    </div>
                   </div>
-                </div>
-            </div>
-               {% endfor %} 
-<<<<<<< HEAD
-=======
-      {% endif %}
->>>>>>> 48f5e775fc74386d1e1acec6731ca75c371c3745
+              </div>
+            {% endfor %} 
+          {% endif %}
           </div>
         </div>
       </section>

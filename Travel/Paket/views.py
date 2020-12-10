@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import FormMixin
 from django.db.models import Q
 from .models import modelPaket, imagesPaket
+from Transaksi.models import modelTransaksi
+from Transaksi.form import TransaksiForm
 import datetime
 
 
@@ -61,9 +64,14 @@ class SearchPaket(ListView):
         return super().get(self.request, *args, **kwargs)
 
 
-class DetailPaket(DetailView):
+class DetailPaket(FormMixin, DetailView):
+    form_class = TransaksiForm
     model = modelPaket
     template_name = 'paket/detailPaket.html'
     extra_context = {
         'title': 'DETAIL',
     }
+    def get_context_data(self, **kwargs):
+        print(kwargs['object'].slug)
+        self.paket = kwargs['object']
+        return super().get_context_data(**kwargs)

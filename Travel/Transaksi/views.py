@@ -8,54 +8,63 @@ from .models import modelTransaksi
 from django.contrib.auth.models import User
 from Paket.models import modelPaket
 from .form import TransaksiForm
+from django.views.decorators.csrf import csrf_protect
 
 
 # Create your views here.
+
 class checkOut(CreateView):
 	model = modelTransaksi
 	form_class = TransaksiForm
 	template_name = 'transaksi/checkOut.html'
-
+	query_string = True
 	# context_object_name = 'paket_object'
 
-	def get_context_data(self, **kwargs):
-		data = modelPaket.objects.get(slug=self.kwargs['slug'])
-		extra_context = {
-			'title': 'CheckOut',
-			'data': data
-		}
-		self.kwargs.update(extra_context)
-		kwargs = self.kwargs
-		return super().get_context_data(**kwargs)
+	# def get_context_data(self, **kwargs):
+	# 	data = modelPaket.objects.get(slug=self.kwargs['slug'])
+	# 	extra_context = {
+	# 		'title': 'CheckOut',
+	# 		'data': data
+	# 	}
+	# 	self.kwargs.update(extra_context)
+	# 	kwargs = self.kwargs
+	# 	return super().get_context_data(**kwargs)
 
-	def post(self, request, **kwargs):
-		paket = modelPaket.objects.get(slug=request.POST['Paket'])
-		user = User.objects.get(email=request.POST['User'])
-		snap = midtransclient.Snap(
-			is_production=False,
-			server_key='SB-Mid-server-uoBpcWvYMzSk72FbVUEUcPox',
-			client_key='SB-Mid-client-EOjbQuFJwheGValW')
+	def get(self, request): 
+		print(self.request.GET)
+		return self.post(self.request)
 
-		jumlah = int(request.POST['jumlah'])
-		param = {
-			"transaction_details": {
-				"order_id": f"order-{request.POST['csrfmiddlewaretoken'][0:5]}",
-				"gross_amount": (jumlah * paket.harga),
-				"customer_email": user.email
-			},
-			"credit_card": {
-				"secure": True
-			}}
-		print(param)
-		token = snap.create_transaction_token(param)
-		print("request : ", request.POST)
-		print("token : ", token)
+	def post(self, request):
+		print("POST")
+		print(request.POST)
+		print(request)
+		# paket = modelPaket.objects.get(slug=request.POST['Paket'])
+		# user = User.objects.get(email=request.POST['User'])
+		# snap = midtransclient.Snap(
+		# 	is_production=False,
+		# 	server_key='SB-Mid-server-uoBpcWvYMzSk72FbVUEUcPox',
+		# 	client_key='SB-Mid-client-EOjbQuFJwheGValW')
 
-		data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
-								'totalHarga': (jumlah * paket.harga), 'token': token, 'status': 'pendding'})
-		data.save()
-		print(data)
-		return HttpResponseRedirect(reverse('transaksi:final', token=data.token))
+		# jumlah = int(request.POST['jumlah'])
+		# param = {
+		# 	"transaction_details": {
+		# 		"order_id": f"order-{request.POST['csrfmiddlewaretoken'][0:5]}",
+		# 		"gross_amount": (jumlah * paket.harga),
+		# 		"customer_email": user.email
+		# 	},
+		# 	"credit_card": {
+		# 		"secure": True
+		# 	}}
+		# print(param)
+		# token = snap.create_transaction_token(param)
+		# print("request : ", request.POST)
+		# print("token : ", token)
+
+		# data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
+		# 						'totalHarga': (jumlah * paket.harga), 'token': token, 'status': 'pendding'})
+		# # data.save()
+		# # print(data)
+		return HttpResponseRedirect(reverse('paket:view'))
 
 class DetailCheckOut(DetailView):
 	model = modelTransaksi
