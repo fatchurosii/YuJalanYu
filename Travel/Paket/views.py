@@ -34,7 +34,7 @@ class SearchPaket(ListView):
                     print(x.tgl_berangkat)
                     dataPaket.append(x)
                 print(len(dataPaket))
-            if len(dataPaket) is 0:
+            if len(dataPaket) == 0:
                 self.extra_context = {
                     'title': 'PAKET LIST',
                     'error': "Data Tidak diTemukan"

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic.edit import FormMixin
 from django.views.generic import CreateView, FormView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -38,29 +39,47 @@ class Login(LoginView):
 class Logout(LogoutView):
 	next_page = reverse_lazy('home')
 
-# class createUser(CreateView):
-# 	model = User
+class createUser(CreateView):
+	model = User
+	form_class = formUser
+	template_name='User/createUser.html'
+	extra_context = {
+		'title':'Register User',
+	}
+	success_url = reverse_lazy('home')
+
+	def post(self, request):
+		form = self.get_form()
+		print("Form : ", form.data)
+		print(self.request.POST)
+		print("password 1 : ", self.request.POST.get('password1', False))
+		print("Password 2 : ", self.request.POST.get('password2', False))
+		if form.is_valid():
+			print(form.is_valid())
+			return redirect('home')
+		else:
+			print(form.is_valid())
+			return super().post(request)
+		
+
+# class createUser(FormView):
 # 	form_class = formUser
-# 	template_name='User/createUser.html'
-# 	extra_context = {
-# 		'title':'Register User',
-# 	}
+# 	template_name = 'User/createUser.html'
 # 	success_url = reverse_lazy('home')
+
+# 	def form_valid(self, form):
+# 		form.save()
+# 		return super(createUser, self).form_valid(form)
 
 # 	def post(self, request):
 # 		form = self.get_form()
-# 		print("password 1 : ", form.data['password1'])
-# 		print("Password 2 : ", form.data['password2'])
-# 		if form.is_valid:
+# 		if form.is_valid():
+# 			print(True)
 # 			print(form.is_valid())
 # 		else:
-# 			print(form.is_valid)
+# 			print(False)
+# 			print(form)
 # 		return redirect('home')
-
-class createUser(FormView):
-	form_class = formUser
-	template_name = 'User/createUser.html'
-	success_url = reverse_lazy('home')
 
 
 
