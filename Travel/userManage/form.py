@@ -36,23 +36,22 @@ class formUser(UserCreationForm):
 				})
 		}
 
-	def __init__(self, *args, **kwargs):
-		super().__init__(*args, **kwargs)
-		self.fields['password1']
-		self.fields['password2']
 
-
-	# def clean_password2(self):
-	# 	print("Ini Password 1")
-	# 	password1 = self.cleaned_data.get("password1")
-	# 	password2 = self.cleaned_data.get("password2")
-	# 	print(password1)
-	# 	if password1 is password2:
-	# 		print(True)
-	# 		return password2
-	# 	else:
-	# 		print(False)
-	# 		raise forms.ValidationError("Password Tidak Sesuai")
+	def clean_password2(self):
+		print("Ini Password 1")
+		password1 = self.cleaned_data.get("password1")
+		password2 = self.cleaned_data.get("password2")
+		print(password1)
+		if password1 == password2:
+			print(True)
+			return password2
+		else:
+			print(False)
+			raise ValidationError(
+				    _('Invalid value: %(value)s'),
+				    code='invalid',
+				    params={'value': '42'},
+				)
 
 	# def clean(self):
 	# 	print("Ini Password 2")
