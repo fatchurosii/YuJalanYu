@@ -55,12 +55,12 @@ class checkOut(CreateView):
 					"secure": True
 				}}
 			print(param)
-			token = snap.create_transaction_token(param)
+			token = snap.create_transaction(param)
 			print("request : ", request.POST)
 			print("token : ", token)
 
 			data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
-									'totalHarga': (jumlah * paket.harga), 'token': token, 'status': 'pendding'})
+									'totalHarga': (jumlah * paket.harga), 'token': token['token'], 'status': 'pendding'})
 			data.save()
 			# print(data['token'].data)
 			return HttpResponseRedirect("%s?token={}".format(data['token'].data) % (reverse('transaksi:final')))
@@ -92,7 +92,6 @@ class DetailCheckOut(DetailView):
 	def get_object(self):
 		url = self.request.GET.get('token', False)
 		print(url)
-		# return super().get_queryset()
 		if not url:
 			print(url)
 			self.queryset = self.model.objects.get(token=url)
@@ -102,7 +101,6 @@ class DetailCheckOut(DetailView):
 			return self.queryset
 
 	def get(self, *args, **kwargs):
-		# print(self.request.GET.get('token', False))
 		if self.query_string:
 			if self.request.GET.get('token', False) is False:
 				return HttpResponseRedirect(reverse('paket:view'))

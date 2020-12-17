@@ -46,7 +46,9 @@
                 <div class="form-label-group">
                   {{form.password2}}
                   {# <input type="password" id="{{form.password2.id_for_label}}" name="{{form.password2.name}}" class="form-control" placeholder="Confirm Password" required> #}
-                  <p>{{form.errors}}</p>
+                  {% for error in form %}
+                    <p>{{error.errors}}</p>
+                  {% endfor %}
                 </div>
   
                 <button class="btn btn-register-login btn-block text-uppercase" type="submit">Register</button>

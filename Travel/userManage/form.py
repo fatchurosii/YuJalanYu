@@ -36,33 +36,4 @@ class formUser(UserCreationForm):
 				})
 		}
 
-
-	def clean_password2(self):
-		print("Ini Password 1")
-		password1 = self.cleaned_data.get("password1")
-		password2 = self.cleaned_data.get("password2")
-		print(password1)
-		if password1 == password2:
-			print(True)
-			return password2
-		else:
-			print(False)
-			raise ValidationError(
-				    _('Invalid value: %(value)s'),
-				    code='invalid',
-				    params={'value': '42'},
-				)
-
-	# def clean(self):
-	# 	print("Ini Password 2")
-	# 	password1 = self.cleaned_data.get("password1")
-	# 	password2 = self.cleaned_data.get("password2")
-		
-	# 	if password1 is password2:
-	# 		print(True)
-	# 		return password1
-	# 	else:
-	# 		print(False)
-	# 		raise forms.ValidationError("Password Salah : ")
-
 	

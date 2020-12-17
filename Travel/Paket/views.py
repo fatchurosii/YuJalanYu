@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormMixin
 from django.db.models import Q
 from .models import modelPaket, imagesPaket
@@ -64,7 +65,8 @@ class SearchPaket(ListView):
         return super().get(self.request, *args, **kwargs)
 
 
-class DetailPaket(FormMixin, DetailView):
+class DetailPaket(LoginRequiredMixin, FormMixin, DetailView):
+    login_url = reverse_lazy('akun:login')
     form_class = TransaksiForm
     model = modelPaket
     initial={}
