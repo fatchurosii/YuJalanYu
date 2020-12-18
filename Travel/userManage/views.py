@@ -22,11 +22,10 @@ class Login(LoginView):
 		if self.request.user.is_authenticated:
 			return redirect('home')
 		else:
-			pass
-			 # self.extra_context = {
-				# 			'title':'LOGIN',
-				# 			''
-				# 		}
+			 self.extra_context = {
+							'title':'LOGIN',
+							'next':self.request.GET.get('next', "")
+						}
 		return self.render_to_response(self.get_context_data())
 
 	def get_success_url(self):

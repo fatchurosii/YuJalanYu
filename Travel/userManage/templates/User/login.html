@@ -27,7 +27,7 @@
             </div>
             <div class="card-body mx-5 my-auto text-center ">
               <img src="{% static 'images/logo-register.png' %}" class="mb-4">
-              <form class="form-signin justify-content-center" method="POST" action="{% url "akun:login" %}" autocomplete="off">
+              <form class="form-signin justify-content-center" method="POST" action="{% url "akun:login" %}?next={{next}}" autocomplete="off">
                 {% csrf_token %}
                 <div class="form-label-group">
                   <input type="email" id="inputEmail" class="form-control" placeholder="Username Or Email address" name="username" required>

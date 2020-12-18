@@ -18,22 +18,9 @@ class checkOut(CreateView):
 	form_class = TransaksiForm
 	template_name = 'transaksi/checkOut.html'
 	query_string = True
-	# context_object_name = 'paket_object'
 
-	# def get_context_data(self, **kwargs):
-	# 	data = modelPaket.objects.get(slug=self.kwargs['slug'])
-	# 	extra_context = {
-	# 		'title': 'CheckOut',
-	# 		'data': data
-	# 	}
-	# 	self.kwargs.update(extra_context)
-	# 	kwargs = self.kwargs
-	# 	return super().get_context_data(**kwargs)
-
-	# def get(self, request): 
-	# 	print("Get")
-	# 	print(self.request.GET.get('paket', False))
-	# 	return self.post(self.request)
+	def get(self, request):
+		return HttpResponseRedirect(reverse('paket:view'))
 
 	def post(self, request):
 		if request.POST.get('csrfmiddlewaretoken', False) is not False:
@@ -61,9 +48,9 @@ class checkOut(CreateView):
 
 			data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
 									'totalHarga': (jumlah * paket.harga), 'token': token['token'], 'status': 'pendding'})
-			data.save()
+			# data.save()
 			# print(data['token'].data)
-			return HttpResponseRedirect("%s?token={}".format(data['token'].data) % (reverse('transaksi:final')))
+			return HttpResponseRedirect("%s?token={}".format(token['token']) % (reverse('transaksi:final')))
 		else:
 			print("false")
 			return HttpResponseRedirect(reverse('paket:view'))
@@ -84,7 +71,6 @@ class DetailCheckOut(DetailView):
 	    	'title': "CHECKOUT FINAL",
 	    	'token': self.request.GET.get('token')
 	    }
-	    print(self.extra_context)
 	    self.kwargs.update(self.extra_context)
 	    kwargs = self.kwargs
 	    return super().get_context_data()
@@ -104,4 +90,8 @@ class DetailCheckOut(DetailView):
 		if self.query_string:
 			if self.request.GET.get('token', False) is False:
 				return HttpResponseRedirect(reverse('paket:view'))
+		try:
+			ada_token = self.model.objects.get(token=self.request.GET.get('token', False))
+		except Exception as e:
+			return HttpResponseRedirect(reverse('paket:view'))
 		return super().get(self.request, *args, **kwargs)

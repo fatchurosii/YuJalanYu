@@ -1,7 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import TemplateView, View
 from Paket.models import modelPaket, imagesPaket
 import datetime
+
+# def adminLog(request):
+# 	if request.user.is_superuser:
+# 		return HttpResponseRedirect(reverse('admin:index'))
+# 	else: return redirect(reverse('home'))
 
 class homeView(View):
 	template_name = 'home.html'
