@@ -76,6 +76,7 @@ header .banner-txt {
 
 .card-travel .card-body {
   min-height: 200px;
+  border-radius: 20px;
 }
 
 .card-travel .card-body .card-title {
@@ -396,7 +397,7 @@ a:hover {
   text-align: center;
 }
 
-.error-message h1 {
+.text-error h1 {
   font-size: 50px;
 }
 /*# sourceMappingURL=main.css.map */
