@@ -87,11 +87,11 @@ header{
 }
 .card-travel{
     margin-top: 50px;
-    .card-body{
-        min-height: 200px;
+    .card-body-home{
+        min-height: 150px;
         border-radius: 20px;
         .card-title{
-            font-size: 30px;
+            font-size: 20px;
             font-weight: bold;
 
         }
@@ -104,19 +104,47 @@ header{
             font-size: 20px;
             font-weight:normal;
         }
-        .card-body{
-            border-radius: 10px;
-            box-shadow: #fafafa;
-        }
+        
         .btn-details{
             width: 100px;
             background-color: $maincolor ;
             color: white;
+            border-radius: 15px;
             &:hover{
                 background-color: $hovercolor;
                 color : #ffffff;
                 width: 100px;
             }
+        }
+    }
+}
+.card-body-search{
+    min-height: 190px;
+    border-radius: 20px;
+    .card-title{
+        font-size: 20px;
+        font-weight: bold;
+
+    }
+    
+    img{
+        background-size: cover;
+    }
+    .card-text{
+        margin-top: -15px;
+        font-size: 20px;
+        font-weight:normal;
+    }
+    
+    .btn-details{
+        width: 100px;
+        background-color: $maincolor ;
+        color: white;
+        border-radius: 15px;
+        &:hover{
+            background-color: $hovercolor;
+            color : #ffffff;
+            width: 100px;
         }
     }
 }
@@ -205,6 +233,7 @@ header{
     min-height: 1000px;
     
     .price-text{
+        // margin-top: -15px;
         color:  $maincolor;
         font-size: 20px;
     }

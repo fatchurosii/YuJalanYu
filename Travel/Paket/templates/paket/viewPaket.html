@@ -48,21 +48,22 @@
         <div class="container">
           <div class="row">
           {% if error is not None %}
-          <div class="error-message">
+        
             <h1 class="text-error mt-5">{{error}}</h1>
-          </div>
+        
             
           {% else %}
             {% for i in paket_object %}
               <div class=" col-md-4 ">
                 <div class="card-travel shadow-lg rounded" >
-                    <div class="card-body">
+                   
                       {% with i.images.all|first as img_pertama %}
                       <img class="card-img-top" src="{{img_pertama.getImage}}" height="200px" alt="Card image cap">
                       {% endwith %}
+                      <div class="card-body card-body-search" height="100px">
                       <h5 class="card-title">{{i.nama_paket}}</h5>
                       <p class="card-text">{{i.destinasi}}</p>
-            				  <p class="price-text mt-5">{{i.harga|intcomma}} K / Person</p>
+            				  <p class="price-text mt-4">{{i.harga|intcomma}} K / Person</p>
             				  <a href="{% url 'paket:detail' i.slug %}" class="btn btn-details float-right">Details</a>
                     </div>
                   </div>

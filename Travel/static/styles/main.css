@@ -74,39 +74,67 @@ header .banner-txt {
   margin-top: 50px;
 }
 
-.card-travel .card-body {
-  min-height: 200px;
+.card-travel .card-body-home {
+  min-height: 150px;
   border-radius: 20px;
 }
 
-.card-travel .card-body .card-title {
-  font-size: 30px;
+.card-travel .card-body-home .card-title {
+  font-size: 20px;
   font-weight: bold;
 }
 
-.card-travel .card-body img {
+.card-travel .card-body-home img {
   background-size: cover;
 }
 
-.card-travel .card-body .card-text {
+.card-travel .card-body-home .card-text {
   margin-top: -15px;
   font-size: 20px;
   font-weight: normal;
 }
 
-.card-travel .card-body .card-body {
-  border-radius: 10px;
-  -webkit-box-shadow: #fafafa;
-          box-shadow: #fafafa;
-}
-
-.card-travel .card-body .btn-details {
+.card-travel .card-body-home .btn-details {
   width: 100px;
   background-color: #0BA0AC;
   color: white;
+  border-radius: 15px;
 }
 
-.card-travel .card-body .btn-details:hover {
+.card-travel .card-body-home .btn-details:hover {
+  background-color: #2dbac4;
+  color: #ffffff;
+  width: 100px;
+}
+
+.card-body-search {
+  min-height: 190px;
+  border-radius: 20px;
+}
+
+.card-body-search .card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-body-search img {
+  background-size: cover;
+}
+
+.card-body-search .card-text {
+  margin-top: -15px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.card-body-search .btn-details {
+  width: 100px;
+  background-color: #0BA0AC;
+  color: white;
+  border-radius: 15px;
+}
+
+.card-body-search .btn-details:hover {
   background-color: #2dbac4;
   color: #ffffff;
   width: 100px;
