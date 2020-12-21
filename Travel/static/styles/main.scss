@@ -404,3 +404,13 @@ a{
     }
 }
 
+.form-label-group{
+   ::placeholder{
+        font-size: 12px;
+        text-align: center;
+    }
+}
+
+.error-message h1{
+    font-size: 50px;
+}

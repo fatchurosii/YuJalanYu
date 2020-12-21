@@ -375,4 +375,28 @@ a:hover {
   color: #2dbac4;
   text-decoration: none;
 }
+
+.form-label-group ::-webkit-input-placeholder {
+  font-size: 12px;
+  text-align: center;
+}
+
+.form-label-group :-ms-input-placeholder {
+  font-size: 12px;
+  text-align: center;
+}
+
+.form-label-group ::-ms-input-placeholder {
+  font-size: 12px;
+  text-align: center;
+}
+
+.form-label-group ::placeholder {
+  font-size: 12px;
+  text-align: center;
+}
+
+.error-message h1 {
+  font-size: 50px;
+}
 /*# sourceMappingURL=main.css.map */
