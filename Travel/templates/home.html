@@ -53,13 +53,12 @@
           </p>
          </div>
          {% for i in data %}
+         {% if forloop.counter0 < 6 %}
           <div class="col-sm-6 col-md-4 ">
             <div class="card-travel shadow-lg rounded" >
-              {% for x in img %}
-                {% if x.id_paket == i %}
-                  <img class="card-img-top" src="{{x.getImage}}" width="200px" alt="Card image cap">
-                {% endif %}
-              {% endfor %}
+                {% with i.images.all|first as img %}
+                  <img class="card-img-top" src="{{img.getImage}}" width="200px" alt="Card image cap">
+                {% endwith %}
               <div class="card-body">
                 <h5 class="card-title">{{i.nama_paket}}</h5>
                 <p class="card-text">{{i.destinasi}} </p> 
@@ -67,6 +66,7 @@
               </div>
             </div>
           </div>
+         {% endif %}
          {% endfor %}
       </div>
     </div>
