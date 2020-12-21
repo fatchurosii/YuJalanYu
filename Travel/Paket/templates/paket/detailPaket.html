@@ -39,7 +39,7 @@
 							{% with object.images.all|first as pertama %}
 							<div class="xzoom-container">
 								   <img 
-									src="{{pertama.url}}" 
+									src="{{pertama.getImage}}" 
 									class="xzoom"
 									id="xzoom-default"
 									xoriginal="{{pertama.id}}"> 
