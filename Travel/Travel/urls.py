@@ -14,3 +14,7 @@ urlpatterns = [
 	path('checkOut/', include('Transaksi.urls', namespace='transaksi')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'Travel.views.handle404'
+
+handler500 = 'Travel.views.handle404'

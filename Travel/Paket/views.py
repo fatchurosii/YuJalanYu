@@ -65,8 +65,7 @@ class SearchPaket(ListView):
         return super().get(self.request, *args, **kwargs)
 
 
-class DetailPaket(LoginRequiredMixin, FormMixin, DetailView):
-    login_url = reverse_lazy('akun:login')
+class DetailPaket(FormMixin, DetailView):
     form_class = TransaksiForm
     model = modelPaket
     initial={}
@@ -77,9 +76,12 @@ class DetailPaket(LoginRequiredMixin, FormMixin, DetailView):
 
     def get_initial(self):
         dataPaket = self.model.objects.get(slug=self.kwargs['slug'])
-        print(self.request.user)
-        self.initial={
+        
+        if self.request.user.is_authenticated:
+            self.initial={
             'paket':dataPaket.slug,
             'user':self.request.user.email
-        }
-        return self.initial.copy()
+            }
+            return self.initial.copy()
+        else:
+            return super().get_initial()

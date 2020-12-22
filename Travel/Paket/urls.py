@@ -3,6 +3,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 from .views import ( DetailPaket, SearchPaket)
 
+if settings.DEBUG:
+	print(settings.DEBUG)
+
 app_name='paket'
 urlpatterns = [
 		re_path(r'^$', SearchPaket.as_view(query_string=False), name='view'),
@@ -11,3 +14,4 @@ urlpatterns = [
 	]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

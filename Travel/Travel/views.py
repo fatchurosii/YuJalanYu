@@ -9,6 +9,9 @@ import datetime
 # 	if request.user.is_superuser:
 # 		return HttpResponseRedirect(reverse('admin:index'))
 # 	else: return redirect(reverse('home'))
+def handle404(request, exception=None):
+	return HttpResponseRedirect(reverse('home'))
+
 
 class homeView(View):
 	template_name = 'home.html'
