@@ -9,7 +9,7 @@
     <section class="section-package-content mt-5">
         <div class="container">
          <div class="row">
-             <div class="row p-0">
+             <div class="col-sm-6 col-md-4 p-0 ml-3">
                  <nav>
                      <ol class="breadcrumb">
                          <li class="breadcrumb-item">
@@ -48,13 +48,16 @@
         <div class="container">
           <div class="row">
           {% if error is not None %}
-        
-            <h1 class="text-error mt-5">{{error}}</h1>
+            <div class="text-center">
+              <p class="text-center text-error mx-5 my-5">{{error}}</p>
+            </div>
+         
+            
         
             
           {% else %}
             {% for i in paket_object %}
-              <div class=" col-md-4 ">
+              <div class="col-6 col-md-4  ">
                 <div class="card-travel shadow-lg rounded" >
                    
                       {% with i.images.all|first as img_pertama %}

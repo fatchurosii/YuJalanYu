@@ -98,7 +98,6 @@ header .banner-txt {
   width: 100px;
   background-color: #0BA0AC;
   color: white;
-  border-radius: 15px;
 }
 
 .card-travel .card-body-home .btn-details:hover {
@@ -131,7 +130,6 @@ header .banner-txt {
   width: 100px;
   background-color: #0BA0AC;
   color: white;
-  border-radius: 15px;
 }
 
 .card-body-search .btn-details:hover {
@@ -425,7 +423,8 @@ a:hover {
   text-align: center;
 }
 
-.text-error h1 {
+.text-error {
   font-size: 50px;
+  color: #5a5959;
 }
 /*# sourceMappingURL=main.css.map */
