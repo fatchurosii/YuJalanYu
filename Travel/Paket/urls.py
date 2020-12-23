@@ -3,9 +3,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from .views import ( DetailPaket, SearchPaket)
 
-if settings.DEBUG:
-	print(settings.DEBUG)
-
 app_name='paket'
 urlpatterns = [
 		re_path(r'^$', SearchPaket.as_view(query_string=False), name='view'),
@@ -13,5 +10,8 @@ urlpatterns = [
 		re_path(r'^detail/(?P<slug>[\w-]+)$', DetailPaket.as_view(), name='detail'),
 	]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# handler404 = 'Travel.views.handle404'
+
+# handler500 = 'Travel.views.handle404'
