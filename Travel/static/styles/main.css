@@ -427,4 +427,16 @@ a:hover {
   font-size: 50px;
   color: #5a5959;
 }
+
+.btn-payment {
+  background-color: #0BA0AC;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.btn-payment:hover {
+  background-color: #2dbac4;
+  color: white;
+}
 /*# sourceMappingURL=main.css.map */

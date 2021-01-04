@@ -448,3 +448,15 @@ a{
     color: #5a5959;
     
 }
+
+.btn-payment{
+    background-color: $maincolor;
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    // font-weight: bold;
+    &:hover{
+        background-color: $hovercolor;
+        color: white;
+    }
+}   

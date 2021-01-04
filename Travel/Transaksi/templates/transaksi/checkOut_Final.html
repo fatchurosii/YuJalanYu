@@ -9,28 +9,37 @@
 	<title>{{title}}</title>
 </head>
 <body>
-	{% include 'include/navbar.html' %}
+	<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+		<a class="navbar-brand ml-5" href="#">
+		  <img src="{%static 'images/logo.png' %}" alt="">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+	  
+	   
+	  </nav>
 
-	<div>
-		{% with data.images.all|first as image %}
-		    <img src="{{image.getImage}}">
-		{% endwith %}
-		{{data.nama_paket}}
-		<h1>	
-			IDR {{data.harga|intcomma}}
-		</h1>
-		
-		{# <form method="POST" action="{% url "transaksi:url_success" %}"> #}
-			{# {% csrf_token %} #}
-			{# <label>Jumlah</label> #}
-			{# {{form.jumlah}} #}
-			{# <h2>Rp. 100.000</h2> #}
-			{# <input type="hidden" name="{{form.paket.label}}" value={{data.slug}}> #}
-			{# <input type="hidden" name="{{form.user.label}}" value={{user.email}}> #}
-			{# <input type="submit"> #}
-		{# </form> #}
-	</div>
-	<button id="pay-button">BAYAR!</button>
+	
+<main>
+
+   
+    <div class="d-flex align-items-center mt-2">
+        <div class="col text-center">
+            <img src="{% static 'images/payment.jpg' %}" width="500px" alt="">
+            <h1>
+               Yuk! Tinggal Satu Langkah Lagi 
+            </h1>
+            <p>
+                Kamu dapat menikmati perjalanan yang kamu impikan
+            </p>
+            <a href="" id="pay-button" class="btn btn-payment mt-3 px-3">
+                BAYAR
+            </a>
+            
+        </div>
+    </div>
+</main>
 	{# <a href="{% url 'home' %}" id="pay-button">Pay!</a>  #}
     {# <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> #}
 	
