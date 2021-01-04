@@ -47,8 +47,8 @@
 							<div class="xzoom-thumbs mt-2">
 								{% for x in object.images.all %}
 								<img 
-									src="{{x.getImage}}" 
-									class="xzoom-gallery" 
+									src="{{x.image.url}}" 
+									class="xzoom-gallery"
 									width="120"
 									xpreview="{{pertama.id}}">
 								</a>

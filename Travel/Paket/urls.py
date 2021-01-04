@@ -8,9 +8,7 @@ urlpatterns = [
 		re_path(r'^$', SearchPaket.as_view(query_string=False), name='view'),
 		re_path(r'^search/', SearchPaket.as_view(query_string=True), name='search'),
 		re_path(r'^detail/(?P<slug>[\w-]+)$', DetailPaket.as_view(), name='detail'),
-	]
-
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+	] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # handler404 = 'Travel.views.handle404'
 

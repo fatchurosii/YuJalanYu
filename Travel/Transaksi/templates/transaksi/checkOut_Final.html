@@ -16,32 +16,33 @@
 		    <img src="{{image.getImage}}">
 		{% endwith %}
 		{{data.nama_paket}}
-		<h1>
+		<h1>	
 			IDR {{data.harga|intcomma}}
 		</h1>
 		
-		<form method="POST" action="{% url "transaksi:url_success" %}">
-			{% csrf_token %}
-			<label>Jumlah</label>
-			{{form.jumlah}}
-			<input type="hidden" name="{{form.paket.label}}" value={{data.slug}}>
-			<input type="hidden" name="{{form.user.label}}" value={{user.email}}>
-			<input type="submit">
-		</form>
+		{# <form method="POST" action="{% url "transaksi:url_success" %}"> #}
+			{# {% csrf_token %} #}
+			{# <label>Jumlah</label> #}
+			{# {{form.jumlah}} #}
+			{# <h2>Rp. 100.000</h2> #}
+			{# <input type="hidden" name="{{form.paket.label}}" value={{data.slug}}> #}
+			{# <input type="hidden" name="{{form.user.label}}" value={{user.email}}> #}
+			{# <input type="submit"> #}
+		{# </form> #}
 	</div>
-	<button id="pay-button">Pay!</button>
+	<button id="pay-button">BAYAR!</button>
 	{# <a href="{% url 'home' %}" id="pay-button">Pay!</a>  #}
-    <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>
+    {# <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> #}
 	
 	<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-EOjbQuFJwheGValW">
 	
 	</script>
     <script type="text/javascript">
     	console.log('ini token : {{token}}');
-    	var token = "{{token}}"
+    	// var token = "{{token}}"
       document.getElementById('pay-button').onclick = function(){
         // SnapToken acquired from previous step
-        snap.pay(token, {
+        snap.pay({
           // Optional
           onSuccess: function(result){
           	console.log('Success');

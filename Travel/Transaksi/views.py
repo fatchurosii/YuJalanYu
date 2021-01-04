@@ -95,3 +95,13 @@ class DetailCheckOut(DetailView):
 		except Exception as e:
 			return HttpResponseRedirect(reverse('paket:view'))
 		return super().get(self.request, *args, **kwargs)
+
+class DetailTesting(ListView):
+	model = modelTransaksi
+	context_object_name = "object"
+	template_name = 'transaksi/checkOut_Final.html'
+
+class DetailSuccess(ListView):
+	model = modelTransaksi
+	context_object_name = "object"
+	template_name = 'transaksi/checkOut_success.html'

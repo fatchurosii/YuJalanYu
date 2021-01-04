@@ -12,8 +12,7 @@ urlpatterns = [
     path('', include('userManage.urls', namespace='akun')),
 	path('paket/', include('Paket.urls', namespace='paket')),
 	path('checkOut/', include('Transaksi.urls', namespace='transaksi')),
-]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'Travel.views.handle404'
 

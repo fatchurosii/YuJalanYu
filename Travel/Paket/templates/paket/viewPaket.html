@@ -61,7 +61,7 @@
                 <div class="card-travel shadow-lg rounded" >
                    
                       {% with i.images.all|first as img_pertama %}
-                      <img class="card-img-top" src="{{img_pertama.getImage}}" height="200px" alt="Card image cap">
+                      <img class="card-img-top" src="{{img_pertama.image.url}}" height="200px" alt="Card image cap">
                       {% endwith %}
                       <div class="card-body card-body-search" height="100px">
                       <h5 class="card-title">{{i.nama_paket}}</h5>

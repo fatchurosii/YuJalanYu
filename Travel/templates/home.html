@@ -57,7 +57,7 @@
           <div class="col-sm-6 col-md-4 ">
             <div class="card-travel shadow-lg rounded" >
                 {% with i.images.all|first as img %}
-                  <img class="card-img-top" src="{{img.getImage}}" height="200px" alt="Card image cap">
+                  <img class="card-img-top" src="{{img.image.url}}" height="200px" alt="Card image cap">
                 {% endwith %}
               <div class="card-body card-body-home" height="100px">
                 <h5 class="card-title">{{i.nama_paket}}</h5>
