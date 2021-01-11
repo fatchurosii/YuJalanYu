@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 
 class email(ModelBackend):
-	print("Masuk EmailBackend")
 	def authenticate(self, request, username=None, password=None, **kwargs):
 		UserModel = get_user_model()
 		try:
