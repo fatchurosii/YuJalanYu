@@ -1,14 +1,13 @@
 import midtransclient
 
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import DetailView, CreateView, ListView
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from .models import modelTransaksi
 from django.contrib.auth.models import User
 from Paket.models import modelPaket
 from .form import TransaksiForm
-from django.views.decorators.csrf import csrf_protect
 
 
 # Create your views here.
@@ -16,7 +15,6 @@ from django.views.decorators.csrf import csrf_protect
 class checkOut(CreateView):
 	model = modelTransaksi
 	form_class = TransaksiForm
-	# template_name = 'transaksi/checkOut.html'
 	query_string = True
 
 	def get(self, request):
@@ -39,71 +37,58 @@ class checkOut(CreateView):
 			},
 			"enabled_payments": [ "bca_klikbca", "bca_klikpay", "bca_va", "bni_va", "gopay", "indomaret"],
 			"credit_card": {
-				"secure": False,
+				"secure": True,
 				"bca_va": {
 	        	"free_text": {
 	            "inquiry": [
 	                {
-	                    "id": "text in Bahasa Indonesia"
+	                    "id": "Silakan Selesaikan Transaksi Anda"
 	                }
 	            ],
 	            "payment": [
 	                {
-	                    "id": "text in Bahasa Indonesia"
+	                    "id": "Pembayaran"
 	                }
 	            ]
 	        }
 },
 			}}
-		print(param)
 		token = snap.create_transaction(param)
-		print("request : ", request.POST)
-		print("token : ", token)
 
 		data = self.form_class({'paket': paket, 'user': user, 'jumlah': jumlah,
 								'totalHarga': (jumlah * paket.harga), 'token': token['token'], 'status': 'pendding'})
 		data.save()
-		print(data['token'].data)
 		return HttpResponseRedirect("%s?token={}".format(data['token'].data) % (reverse('transaksi:final')))
 		
 class DetailCheckOut(DetailView):
 	model = modelTransaksi
-	context_object_name = "object"
 	template_name = 'transaksi/checkOut_Final.html'
-	pk_url_kwarg = 'token'
 	query_string = True
-
-	def get_context_data(self, *args,**kwargs):
-	    self.extra_context = {
-	    	'title': "CHECKOUT FINAL",
-	    	'token': self.request.GET.get('token')
-	    }
-	    self.kwargs.update(self.extra_context)
-	    kwargs = self.kwargs
-	    return super().get_context_data()
+	extra_context = {
+	'status':"Yuk! Tinggal Satu Langkah Lagi",
+	'body': "Kamu dapat menikmati perjalanan yang kamu impikan"
+	}
 
 	def get_object(self):
-		url = self.request.GET.get('token', False)
-		if url is not False:
-			print("Masuk URL")
-			self.queryset = self.model.objects.get(token=url)
-			# if self.queryset.status == 'pendding':
+		try:
+			self.queryset = get_object_or_404(self.model, token=self.request.GET.get('token'))
+			if self.queryset.status == 'success':
+				print("Didalam If : ", self.queryset.status, self.queryset.token)
+				return HttpResponseRedirect("%s?token={}".format(self.queryset.token) % reverse('transaksi:success'))
 			return self.queryset
-		else:
+		except Exception as e:
 			self.queryset = None
+			self.extra_context = {
+				'status':"Mohon Maaf Transaksi Anda Tidak Tersedia"
+			}
 			return self.queryset
 
 	def get(self, *args, **kwargs):
-		print("Get : ", self.queryset)
-		if self.query_string:
-			if self.request.GET.get('token', False) is False:
-				return HttpResponseRedirect(reverse('paket:view'))
-		try:
-			ada_token = self.model.objects.get(token=self.request.GET.get('token', False))
-		except Exception as e:
-			return HttpResponseRedirect(reverse('paket:view'))
-		return super().get(*args, **kwargs)
+		if self.request.GET.get('token', False) == False:
+			return HttpResponseRedirect(reverse('paket:view'))		
 
+		return super().get(args, kwargs)
+			
 class DetailSuccess(ListView):
 	model = modelTransaksi
 	context_object_name = "object"
