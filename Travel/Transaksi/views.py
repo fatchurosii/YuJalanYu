@@ -1,6 +1,6 @@
 import midtransclient
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import DetailView, CreateView, ListView
 from django.urls import reverse
@@ -16,9 +16,10 @@ class checkOut(CreateView):
 	model = modelTransaksi
 	form_class = TransaksiForm
 	query_string = True
+	http_method_names = ['post']
 
-	def get(self, request):
-		return HttpResponseRedirect(reverse('paket:view'))
+	# def get(self, request):
+	# 	return HttpResponseRedirect(reverse('paket:view'))
 
 	def post(self, request):
 		paket = modelPaket.objects.get(slug=request.POST['paket'])
@@ -63,6 +64,7 @@ class checkOut(CreateView):
 class DetailCheckOut(DetailView):
 	model = modelTransaksi
 	template_name = 'transaksi/checkOut_Final.html'
+	url_success = None
 	query_string = True
 	extra_context = {
 	'status':"Yuk! Tinggal Satu Langkah Lagi",
@@ -72,20 +74,22 @@ class DetailCheckOut(DetailView):
 	def get_object(self):
 		try:
 			self.queryset = get_object_or_404(self.model, token=self.request.GET.get('token'))
-			if self.queryset.status == 'success':
-				print("Didalam If : ", self.queryset.status, self.queryset.token)
-				return HttpResponseRedirect("%s?token={}".format(self.queryset.token) % reverse('transaksi:success'))
-			return self.queryset
 		except Exception as e:
 			self.queryset = None
 			self.extra_context = {
-				'status':"Mohon Maaf Transaksi Anda Tidak Tersedia"
+			'status':"Maaf Transaksi Ini Tidak Ada"
 			}
-			return self.queryset
+		return self.queryset
 
 	def get(self, *args, **kwargs):
 		if self.request.GET.get('token', False) == False:
-			return HttpResponseRedirect(reverse('paket:view'))		
+			return HttpResponseRedirect(reverse('paket:view'))
+
+		data = self.model.objects.filter(token=self.request.GET.get('token')).first()
+		if data != None:
+			print(data.status)
+			if data.status == 'success':
+				return HttpResponseRedirect("%s?token={}".format(data.token) % (reverse('transaksi:success')))
 
 		return super().get(args, kwargs)
 			
