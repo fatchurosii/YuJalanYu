@@ -64,7 +64,6 @@ class checkOut(CreateView):
 class DetailCheckOut(DetailView):
 	model = modelTransaksi
 	template_name = 'transaksi/checkOut_Final.html'
-	url_success = None
 	query_string = True
 	extra_context = {
 	'status':"Yuk! Tinggal Satu Langkah Lagi",
@@ -87,7 +86,6 @@ class DetailCheckOut(DetailView):
 
 		data = self.model.objects.filter(token=self.request.GET.get('token')).first()
 		if data != None:
-			print(data.status)
 			if data.status == 'success':
 				return HttpResponseRedirect("%s?token={}".format(data.token) % (reverse('transaksi:success')))
 
@@ -95,7 +93,6 @@ class DetailCheckOut(DetailView):
 			
 class DetailSuccess(ListView):
 	model = modelTransaksi
-	context_object_name = "object"
 	template_name = 'transaksi/checkOut_success.html'
 	query_string = True
 
@@ -105,7 +102,6 @@ class DetailSuccess(ListView):
 			trans = self.model.objects.get(token=token)
 			trans.status = 'success'
 			trans.save()
-			print(trans)
 		except Exception as e:
 			return HttpResponseRedirect(reverse('paket:view'))
 

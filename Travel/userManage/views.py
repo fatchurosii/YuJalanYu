@@ -10,7 +10,6 @@ from .form import formUser
 # Create your views here.
 class Login(LoginView):
 	template_name = 'User/login.html'
-	# form_class = formUser
 	success_url = reverse_lazy('home')
 	extra_context = {
 		'title':'LOGIN'
@@ -30,12 +29,9 @@ class Login(LoginView):
 
 	def get_success_url(self):
 		url = self.request.GET.get('next', False)
-		print(self.request.GET)
 		if url is False:
-			print("Harusnya False")
 			return self.success_url
 		else:
-			print("Harusnya True")
 			self.success_url = self.request.GET['next']
 			return self.success_url
 
@@ -61,7 +57,6 @@ class createUser(CreateView):
 			user.groups.add(grup)
 			return redirect('home')
 		else:
-			print(form.is_valid())
 			return super().post(request)
 
 
