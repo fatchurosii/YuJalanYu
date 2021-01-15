@@ -1,0 +1,11 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+ 
+PassengerAppRoot "/home/yujalany/yujalanyu"
+ 
+PassengerBaseURI "/."
+ 
+PassengerPython "/home/namauser/virtualenv/yujalanyu/3.8/bin/python3.8"
+ 
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+ 
+RewriteCond %{ENV:REDIRECT_STATUS} ^$

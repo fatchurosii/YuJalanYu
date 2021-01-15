@@ -26,7 +26,7 @@ SECRET_KEY = 'r27!npj4#macmx73gxhe6-+dr!212yjp12h!&pwnw&478@)*1w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['yujalanyu.site', '127.0.0.1',]
+ALLOWED_HOSTS = ['yujalanyu.site', '127.0.0.1', 'localhost', 'www.yujalanyu.site']
 # ALLOWED_HOSTS = []
 
 # Application definition
@@ -80,13 +80,23 @@ WSGI_APPLICATION = 'Travel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Travel',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -129,14 +139,21 @@ LOGIN_URL = '/login/'
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
+# STATIC_ROOT = '/home/yujalany/yujalanyu/static/'
+
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
+    # BASE_DIR+"/static/"
 ]
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# MEDIA_ROOT = '/home/yujalany/yujalanyu/media/' 
+STATIC_ROOT = '/home/websites/dj.yujalanyu.site/static/'
+
+MEDIA_ROOT = '/home/websites/dj.yujalanyu.site/static/'
