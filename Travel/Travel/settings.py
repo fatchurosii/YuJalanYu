@@ -24,10 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'r27!npj4#macmx73gxhe6-+dr!212yjp12h!&pwnw&478@)*1w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-
-# ALLOWED_HOSTS = ['yujalanyu.site', '127.0.0.1',]
 
 ALLOWED_HOSTS = ['yujalanyu.site', '127.0.0.1', 'localhost', 'www.yujalanyu.site']
 # ALLOWED_HOSTS = []
@@ -90,12 +88,23 @@ WSGI_APPLICATION = 'Travel.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Travel',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Travel',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME': 'yujalany_Travel',
+        'USER': 'yujalany_root',
+        'PASSWORD': '$;vYoo9_)Gv}',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -140,23 +149,17 @@ USE_TZ = True
 
 LOGIN_URL = '/login/'
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# STATIC_ROOT = '/home/yujalany/yujalanyu/static/'
-
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-    # BASE_DIR+"/static/"
-]
-
 MEDIA_URL = '/media/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'assets')
+]
+
+MEDIA_ROOT = '/home/yujalany/public_html/media/'
+
+STATIC_ROOT = '/home/yujalany/yujalanyu/static/'
+
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# MEDIA_ROOT = '/home/yujalany/yujalanyu/media/' 
-STATIC_ROOT = '/home/websites/dj.yujalanyu.site/static/'
-
-MEDIA_ROOT = '/home/websites/dj.yujalanyu.site/static/'
